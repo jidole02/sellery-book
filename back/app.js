@@ -4,10 +4,12 @@ const morgan = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const dotenv = require("dotenv");
+const passport = require("passport");
 
 dotenv.config();
 const pageRouter = require("./routes/page");
 const { sequelize } = require("./models");
+const passportConfig = require("./passport");
 
 const app = express();
 app.set("port", 8002);
@@ -33,6 +35,8 @@ app.use(
     },
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", pageRouter);
 
