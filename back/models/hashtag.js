@@ -22,5 +22,7 @@ module.exports = class Hashtag extends Seq.Model {
       }
     );
   }
-  static associate(db) {}
+  static associate(db) {
+    db.Hashtag.belongsToMany(db.Post, { through: "PostHashtag" });
+  }
 };

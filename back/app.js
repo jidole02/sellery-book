@@ -7,9 +7,15 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 const pageRouter = require("./routes/page");
+const { sequelize } = require("./models");
 
 const app = express();
 app.set("port", 8002);
+
+sequelize
+  .sync({ force: false })
+  .then(() => console.log("success to connect DB"))
+  .catch((err) => console.log(err));
 
 app.use(morgan("dev"));
 app.use(express.json());
