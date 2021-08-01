@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   nickname: {
     type: String,
-    required: true,
     maxlength: 20,
   },
   email: {
@@ -17,6 +16,7 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
+    required: true,
     minlength: 7,
     maxlength: 20,
   },
@@ -48,4 +48,6 @@ userSchema.methods.comparePassword = function (plainPassword) {
     .catch((err) => err);
 };
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = { User };

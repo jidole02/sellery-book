@@ -9,7 +9,9 @@ const connect = () => {
     {
       dbName: "sellery_book",
       useNewUrlParser: true,
+      useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     },
     (err) => {
       err
