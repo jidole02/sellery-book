@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../schemas/user");
 
-router.route("/auth").post(async (req, res, next) => {
+router.route("/signup").post(async (req, res, next) => {
   try {
     const user = await User.create(req.body);
     console.log(user);
