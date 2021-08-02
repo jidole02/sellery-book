@@ -16,7 +16,6 @@ router.route("/auth").post(async (req, res, next) => {
 router.route("/login").post(async (req, res, next) => {
   try {
     await User.findOne({ email: req.body.email }, (err, user) => {
-      console.log(user);
       if (user === null) {
         return res.json({
           login: false,
@@ -32,9 +31,14 @@ router.route("/login").post(async (req, res, next) => {
                 message: "비밀번호가 일치하지 않습니다",
               });
             }
-            return res.json({
-              login: true,
-            });
+            user
+              .generateToken()
+              .then((user) => {
+                res.status(200).json({ login: true, token: user.token });
+              })
+              .catch((err) => {
+                res.status(400).send(err);
+              });
           })
           .catch((err) => res.json({ login: false, err }));
       }
