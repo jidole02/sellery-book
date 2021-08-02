@@ -59,6 +59,18 @@ userSchema.methods.generateToken = function () {
     .catch((err) => err);
 };
 
+userSchema.methods.checkToken = function (token) {
+  try {
+    const check = jwt.verify(token, "secretToken");
+    if (check) {
+      return true;
+    }
+  } catch (error) {
+    return false;
+  }
+};
+// verification ? true : false
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User };

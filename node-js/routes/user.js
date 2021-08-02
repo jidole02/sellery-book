@@ -49,4 +49,16 @@ router.route("/login").post(async (req, res, next) => {
   }
 });
 
+router.route("/check").post(async (req, res, next) => {
+  try {
+    await User.findOne({ token: req.body.token }, (err, user) => {
+      user
+        ? res.json({ checked: user.checkToken(req.body.token) })
+        : res.json({ checked: false });
+    });
+  } catch (error) {
+    res.json({ checked: false });
+  }
+});
+
 module.exports = router;
