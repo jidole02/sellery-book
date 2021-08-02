@@ -50,7 +50,9 @@ userSchema.methods.comparePassword = function (plainPassword) {
 };
 
 userSchema.methods.generateToken = function () {
-  const token = jwt.sign(this._id.toHexString(), "secretToken");
+  const token = jwt.sign({ test: this._id.toHexString() }, "secretToken", {
+    expiresIn: "24h",
+  });
   this.token = token;
   return this.save()
     .then((user) => user)
