@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as S from "../styles";
+import auth from "../../../src/api/auth";
 
 export default function SignUpPage() {
   const [data, setDate] = useState({
@@ -26,7 +27,7 @@ export default function SignUpPage() {
     });
   };
   const { email, pwd, checkPwd, nick } = data;
-  const subData = () => {
+  const subData = async () => {
     if (email && pwd && checkPwd && nick) {
       if (pwd !== checkPwd) {
         alert("비밀번호가 다릅니다");
@@ -44,6 +45,15 @@ export default function SignUpPage() {
         alert("이메일 양식을 맞추어주세요.");
         return;
       }
+      // all pass
+      await auth
+        .signUp({ email: email, pwd: pwd, nick: nick })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          if (err.response.status) alert("이미 존재하는 이메일입니다.");
+        });
     } else alert("모든 정보를 입력해주세요.");
   };
   return (
