@@ -69,6 +69,7 @@ export const AuthLink = styled.div`
 `;
 
 export const Link = styled.div`
+  cursor: pointer;
   height: 100%;
   display: flex;
   align-items: center;

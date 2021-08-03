@@ -1,6 +1,7 @@
 import SearchIcon from "../../assets/searchIcon";
 import * as S from "./styles";
 import { useRouter } from "next/router";
+import NavLink from "./navLink";
 
 export default function Header() {
   const router = useRouter();
@@ -37,10 +38,10 @@ export default function Header() {
         <S.Container>
           <>
             <div style={{ gap: "50px", height: "100%" }}>
-              <S.Link>메인페이지</S.Link>
-              <S.Link>베스트셀러</S.Link>
-              <S.Link>전체보기</S.Link>
-              <S.Link>책 집필하기</S.Link>
+              <NavLink content="메인페이지" href="/" />
+              <NavLink content="베스트셀러" href="/best" />
+              <NavLink content="전체보기" href="/all" />
+              <NavLink content="책 집필하기" href="/write" />
             </div>
           </>
         </S.Container>
