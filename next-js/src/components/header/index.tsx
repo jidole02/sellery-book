@@ -22,7 +22,6 @@ export default function Header() {
       auth
         .tokenCheck(token)
         .then((res) => {
-          console.log(res);
           if (res.data.checked) setName(res.data.username);
         })
         .catch((err) => {
