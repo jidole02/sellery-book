@@ -19,7 +19,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 7,
-    maxlength: 25,
+    maxlength: 200,
   },
   token: {
     type: String,
