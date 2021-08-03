@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as S from "../styles";
 import auth from "../../../src/api/auth";
+import { useRouter } from "next/router";
 
 export default function SignUpPage() {
   const [data, setDate] = useState({
@@ -9,6 +10,7 @@ export default function SignUpPage() {
     checkPwd: "",
     nick: "",
   });
+  const router = useRouter();
   const CheckEmail = (str: string): boolean => {
     var reg_email =
       /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -49,7 +51,7 @@ export default function SignUpPage() {
       await auth
         .signUp({ email: email, pwd: pwd, nick: nick })
         .then((res) => {
-          console.log(res);
+          router.push("/auth/login");
         })
         .catch((err) => {
           if (err.response.status === 400) alert("이미 존재하는 이메일입니다.");

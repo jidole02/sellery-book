@@ -4,12 +4,17 @@ const { User } = require("../schemas/user");
 
 router.route("/signup").post(async (req, res, next) => {
   try {
-    if (await User.find({ email: req.email })) {
-      return res.status(400).json({ message: "이미 존재하는 이메일입니다." });
-    }
-    const user = await User.create(req.body);
-    console.log(user);
-    res.status(201).json(user);
+    await User.findOne({ email: req.body.email }, async (err, user) => {
+      if (user) {
+        return res.status(400).json({
+          message: "이미 존재하는 이메일 입니다."
+        });
+      } else {
+        const user = await User.create(req.body);
+        console.log(user);
+        res.status(201).json(user);
+      }
+    });
   } catch (error) {
     console.log(error);
     next(error);
