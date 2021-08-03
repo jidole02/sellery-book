@@ -14,9 +14,7 @@ export default function SignUpPage() {
   });
   const router = useRouter();
   const CheckEmail = (str: string): boolean => {
-    var reg_email =
-      /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-
+    var reg_email =/^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
     if (!reg_email.test(str)) {
       return false;
     } else {
