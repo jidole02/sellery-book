@@ -5,6 +5,10 @@ body {
   font-family: 나눔스퀘어;
 }
 
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -22,8 +26,22 @@ button,input{
   font-family: 나눔스퀘어;
 }
 
+button{
+  cursor: pointer;
+}
+
 #flex-center{
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+#row-center{
+  display: flex;
+  justify-content: center;
+}
+
+#col-center{
+  display: flex;
   align-items: center;
 }

@@ -5,10 +5,12 @@ import { COLOR, CONTAIENR } from "./../../../styles/index";
 export const AllWrapper = styled.header`
   position: fixed;
   width:100%;
+  z-index:2;
 `;
 
 export const Wrapper = styled(WRAPPER)`
   border-bottom: 1px solid ${COLOR.border};
+  background:white;
 `;
 
 export const Container = styled(CONTAIENR)`
