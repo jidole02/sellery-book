@@ -1,7 +1,8 @@
 import axios, { AxiosError } from 'axios'
+import { DOMAIN } from './export';
 
 const instance = axios.create({
-    baseURL: "localhost",
+    baseURL: DOMAIN,
     timeout: 100000
 });
 instance.interceptors.request.use(
