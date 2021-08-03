@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   nickname: {
     type: String,
-    maxlength: 20,
+    maxlength: 10,
   },
   email: {
     type: String,
@@ -19,7 +19,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 7,
-    maxlength: 100,
+    maxlength: 25,
   },
   token: {
     type: String,
