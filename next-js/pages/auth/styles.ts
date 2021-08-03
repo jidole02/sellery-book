@@ -41,9 +41,18 @@ export const InpContaienr = styled.div`
   & input {
     border: 1px solid ${COLOR.text};
     color: ${COLOR.text};
-    font-size: 16px;
+    letter-spacing: 0px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
     &::placeholder {
       color: ${COLOR.text};
+      letter-spacing: -1px;
+    }
+  }
+  & input[type="password"] {
+    letter-spacing: 2px;
+    &::placeholder {
+      letter-spacing: -1px;
     }
   }
   & button {
@@ -52,4 +61,12 @@ export const InpContaienr = styled.div`
     background: ${COLOR.sub};
     color: white;
   }
+`;
+
+export const Quest = styled.div`
+  color: ${COLOR.text};
+  font-size: 14px;
+  margin-top:70px;
+  text-decoration:underline;
+  cursor: pointer;
 `;
