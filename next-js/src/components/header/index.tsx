@@ -2,9 +2,36 @@ import SearchIcon from "../../assets/searchIcon";
 import * as S from "./styles";
 import { useRouter } from "next/router";
 import NavLink from "./navLink";
+import { useEffect, useState } from "react";
+import auth from "../../api/auth";
+import { toast } from "react-toastify";
+toast.configure({ autoClose: 2000 });
 
 export default function Header() {
   const router = useRouter();
+  const [name, setName] = useState<string>("");
+  const [toggle, setToggle] = useState<boolean>(false);
+  const logout = (): void => {
+    localStorage.setItem("sellery-token", "");
+    setToggle(!toggle);
+    toast.success("로그아웃 되었습니다.");
+  };
+  useEffect(() => {
+    const token = localStorage.getItem("sellery-token");
+    if (token) {
+      auth
+        .tokenCheck(token)
+        .then((res) => {
+          console.log(res);
+          if (res.data.checked) setName(res.data.username);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setName("");
+    }
+  }, [toggle, router.pathname]);
   return (
     <S.AllWrapper>
       <S.Wrapper>
@@ -24,12 +51,23 @@ export default function Header() {
           </>
           <>
             <div style={{ gap: "20px" }}>
-              <S.AuthLink onClick={() => router.push("/auth/signup")}>
-                회원가입
-              </S.AuthLink>
-              <S.AuthLink onClick={() => router.push("/auth/login")}>
-                로그인
-              </S.AuthLink>
+              {name ? (
+                <>
+                  <S.AuthLink onClick={logout}>로그아웃</S.AuthLink>
+                  <S.AuthLink onClick={() => router.push("/mypage")}>
+                    {name} 님
+                  </S.AuthLink>
+                </>
+              ) : (
+                <>
+                  <S.AuthLink onClick={() => router.push("/auth/signup")}>
+                    회원가입
+                  </S.AuthLink>
+                  <S.AuthLink onClick={() => router.push("/auth/login")}>
+                    로그인
+                  </S.AuthLink>
+                </>
+              )}
             </div>
           </>
         </S.Container>

@@ -7,7 +7,7 @@ router.route("/signup").post(async (req, res, next) => {
     await User.findOne({ email: req.body.email }, async (err, user) => {
       if (user) {
         return res.status(400).json({
-          message: "이미 존재하는 이메일 입니다."
+          message: "이미 존재하는 이메일 입니다.",
         });
       } else {
         const user = await User.create(req.body);
@@ -42,7 +42,11 @@ router.route("/login").post(async (req, res, next) => {
             user
               .generateToken()
               .then((user) => {
-                res.status(200).json({ login: true, token: user.token });
+                res.status(200).json({
+                  login: true,
+                  token: user.token,
+                  username: user.nickname,
+                });
               })
               .catch((err) => {
                 res.status(400).send(err);
@@ -61,7 +65,10 @@ router.route("/check").post(async (req, res, next) => {
   try {
     await User.findOne({ token: req.body.token }, (err, user) => {
       user
-        ? res.json({ checked: user.checkToken(req.body.token) })
+        ? res.json({
+            checked: user.checkToken(req.body.token),
+            username: user.nickname,
+          })
         : res.json({ checked: false });
     });
   } catch (error) {

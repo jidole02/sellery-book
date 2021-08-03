@@ -22,4 +22,13 @@ export default {
       },
     });
   },
+  tokenCheck(token) {
+    return request({
+      url: `/user/check`,
+      method: "post",
+      data: {
+        token: token,
+      },
+    });
+  },
 };
