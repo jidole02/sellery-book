@@ -37,7 +37,7 @@ export default function Header() {
         <S.Container>
           <>
             <div>
-              <S.Logo>
+              <S.Logo onClick={() => router.push("/")}>
                 <b>SELLERY</b>
                 <S.Line />
                 <span>샐러리북</span>

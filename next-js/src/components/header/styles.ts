@@ -4,13 +4,13 @@ import { COLOR, CONTAIENR } from "./../../../styles/index";
 
 export const AllWrapper = styled.header`
   position: fixed;
-  width:100%;
-  z-index:2;
+  width: 100%;
+  z-index: 2;
 `;
 
 export const Wrapper = styled(WRAPPER)`
   border-bottom: 1px solid ${COLOR.border};
-  background:white;
+  background: white;
 `;
 
 export const Container = styled(CONTAIENR)`
@@ -28,6 +28,7 @@ export const Container = styled(CONTAIENR)`
 `;
 
 export const Logo = styled.div`
+  cursor: pointer;
   & b {
     color: ${COLOR.main};
     font-family: Comic Sans MS;
