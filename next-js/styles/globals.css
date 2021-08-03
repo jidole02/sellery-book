@@ -1,0 +1,29 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 나눔스퀘어;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 나눔스퀘어;
+}
+
+button,input{
+  outline: none;
+  box-sizing: border-box;
+  border:none;
+  font-family: 나눔스퀘어;
+}
+
+#flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
