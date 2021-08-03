@@ -52,7 +52,7 @@ export default function SignUpPage() {
           console.log(res);
         })
         .catch((err) => {
-          if (err.response.status) alert("이미 존재하는 이메일입니다.");
+          if (err.response.status === 400) alert("이미 존재하는 이메일입니다.");
         });
     } else alert("모든 정보를 입력해주세요.");
   };
