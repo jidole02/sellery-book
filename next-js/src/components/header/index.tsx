@@ -6,7 +6,7 @@ import NavLink from "./navLink";
 export default function Header() {
   const router = useRouter();
   return (
-    <>
+    <S.AllWrapper>
       <S.Wrapper>
         <S.Container>
           <>
@@ -24,10 +24,10 @@ export default function Header() {
           </>
           <>
             <div style={{ gap: "20px" }}>
-              <S.AuthLink onClick={() => router.push("/signup")}>
+              <S.AuthLink onClick={() => router.push("/auth/signup")}>
                 회원가입
               </S.AuthLink>
-              <S.AuthLink onClick={() => router.push("/login")}>
+              <S.AuthLink onClick={() => router.push("/auth/login")}>
                 로그인
               </S.AuthLink>
             </div>
@@ -46,6 +46,6 @@ export default function Header() {
           </>
         </S.Container>
       </S.Wrapper>
-    </>
+    </S.AllWrapper>
   );
 }

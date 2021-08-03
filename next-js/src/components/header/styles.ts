@@ -2,6 +2,11 @@ import styled from "@emotion/styled";
 import { WRAPPER } from "../../../styles";
 import { COLOR, CONTAIENR } from "./../../../styles/index";
 
+export const AllWrapper = styled.header`
+  position: fixed;
+  width:100%;
+`;
+
 export const Wrapper = styled(WRAPPER)`
   border-bottom: 1px solid ${COLOR.border};
 `;
