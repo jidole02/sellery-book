@@ -34,7 +34,7 @@ router.route("/login").post(async (req, res, next) => {
           .comparePassword(req.body.password)
           .then((isMatch) => {
             if (!isMatch) {
-              return res.json({
+              return res.status(400).json({
                 login: false,
                 message: "비밀번호가 일치하지 않습니다",
               });
