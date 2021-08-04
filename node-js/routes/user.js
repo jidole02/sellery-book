@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkToken } = require("../middleware/tokenCheck");
 const router = express.Router();
 const { User } = require("../schemas/user");
 
@@ -73,6 +74,17 @@ router.route("/check").post(async (req, res, next) => {
     });
   } catch (error) {
     res.json({ checked: false });
+  }
+});
+
+router.put("/logout", checkToken, async (req, res, next) => {
+  try {
+    console.log(await User.findOne({ token: req.token }));
+    await User.updateOne({ token: req.token }, { $set: { token: "" } });
+    res.status(201).json({ message: "success" });
+  } catch (error) {
+    console.log(error);
+    next(error);
   }
 });
 
