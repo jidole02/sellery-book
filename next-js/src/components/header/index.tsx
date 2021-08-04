@@ -9,7 +9,7 @@ toast.configure({ autoClose: 2000 });
 
 export default function Header() {
   const router = useRouter();
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState<string>();
   const [toggle, setToggle] = useState<boolean>(false);
   const logout = (): void => {
     auth
