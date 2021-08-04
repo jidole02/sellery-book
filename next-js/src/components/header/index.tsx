@@ -30,13 +30,18 @@ export default function Header() {
       auth
         .tokenCheck(token)
         .then((res) => {
-          if (res.data.checked) setName(res.data.username);
+          if (res.data.checked) {
+            setName(res.data.username);
+            localStorage.setItem("sellery-name", res.data.username);
+          }
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
       setName("");
+      localStorage.setItem("sellery-token", "");
+      localStorage.setItem("sellery-name", "");
     }
   }, [toggle, router.pathname]);
   return (

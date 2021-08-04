@@ -1,12 +1,15 @@
 import * as S from "./styles";
-import Image from "next/image";
-import notBook from "/public/notbook.png";
 
 export default function WritePage() {
   return (
-    <>
-      <Image src={notBook} width="400px" height="330px" />
-      asdfjl
-    </>
+    <S.Wrapper id="flex-center">
+      <img
+        src="/notbook.png"
+        style={{ width: "180px", height: "140px" }}
+        alt=""
+      />
+      <S.NotMent>쓰던 책이 아무것도 없습니다.</S.NotMent>
+      <S.WriteBtn>책 쓰기 {">"}</S.WriteBtn>
+    </S.Wrapper>
   );
 }
