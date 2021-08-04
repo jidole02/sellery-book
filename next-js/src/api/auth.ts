@@ -1,4 +1,5 @@
 import request from "./axios";
+import { TOKEN } from "./export";
 
 export default {
   signUp({ email, pwd, nick }) {
@@ -28,6 +29,15 @@ export default {
       method: "post",
       data: {
         token: token,
+      },
+    });
+  },
+  logout() {
+    return request({
+      url: `/user/logout`,
+      method: "put",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
       },
     });
   },

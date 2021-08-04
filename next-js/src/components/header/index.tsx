@@ -12,9 +12,17 @@ export default function Header() {
   const [name, setName] = useState<string>("");
   const [toggle, setToggle] = useState<boolean>(false);
   const logout = (): void => {
-    localStorage.setItem("sellery-token", "");
-    setToggle(!toggle);
-    toast.success("로그아웃 되었습니다.");
+    auth
+      .logout()
+      .then(() => {
+        localStorage.setItem("sellery-token", "");
+        setToggle(!toggle);
+        toast.success("로그아웃 되었습니다.");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("로그아웃에 실패하였습니다.");
+      });
   };
   useEffect(() => {
     const token = localStorage.getItem("sellery-token");
