@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
             width: "100%",
             height: "100%",
             position: "relative",
-            paddingTop: "130px",
+            paddingTop: "120px",
           }}
         >
           <Component {...pageProps} />

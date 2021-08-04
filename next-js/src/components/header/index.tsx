@@ -18,6 +18,7 @@ export default function Header() {
         localStorage.setItem("sellery-token", "");
         setToggle(!toggle);
         toast.success("로그아웃 되었습니다.");
+        router.push("/");
       })
       .catch((err) => {
         console.log(err);
