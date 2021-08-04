@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkToken } = require("../middleware/tokenCheck");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -33,25 +34,30 @@ router.post("/upload/img", upload.single("img"), (req, res) => {
 });
 
 const upload2 = multer();
-router.post("/upload", upload2.none(), async (req, res, next) => {
-  try {
-    const user = await User.findOne({ token: req.body.token });
-    const id = user["_id"];
-    const name = user.nickname;
-    const book = await Book.create({
-      writerId: id,
-      writerName: name,
-      title: req.body.title,
-      genre: req.body.genre,
-      coverImg: req.body.src,
-      intro: req.body.intro,
-      writerComment: req.body.writerComment,
-    });
-    return res.status(201).json(book);
-  } catch (error) {
-    console.error(error);
-    next(error);
+router.post(
+  "/upload",
+  checkToken,
+  upload2.none(),
+  async (req, res, next) => {
+    try {
+      const user = await User.findOne({ token: req.token });
+      const id = user["_id"];
+      const name = user.nickname;
+      const book = await Book.create({
+        writerId: id,
+        writerName: name,
+        title: req.body.title,
+        genre: req.body.genre,
+        coverImg: req.body.src,
+        intro: req.body.intro,
+        writerComment: req.body.writerComment,
+      });
+      return res.status(201).json(book);
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
   }
-});
+);
 
 module.exports = router;
