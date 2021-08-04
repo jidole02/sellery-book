@@ -17,9 +17,11 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/img", express.static(path.join(__dirname, "uploads")));
 
 // routes
 app.use("/user", require("./routes/user"));
+app.use("/book", require("./routes/book"));
 
 app.use((req, res, next) => {
   const err = new Error(`${req.method} ${req.url} router is not find`);
@@ -32,7 +34,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
   res.status(err.status || 500);
-  res.json({ error: err })
+  res.json({ error: err });
 });
 
 app.listen(app.get("port"), () => {
