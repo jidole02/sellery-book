@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import * as S from "./styles";
 import book from "../../src/api/book";
+import None from "./none";
+import BookCard from "./bookCard";
+import { WRAPPER } from "../../styles";
 
 export default function WritePage() {
   const [data, setData] = useState<any[]>([]);
@@ -18,32 +21,40 @@ export default function WritePage() {
   return (
     <>
       {data.length === 0 ? (
-        <>
-          {" "}
-          <S.Wrapper id="flex-center">
-            <img
-              src="/notbook.png"
-              style={{ width: "180px", height: "140px" }}
-              alt=""
-            />
-            <S.NotMent>쓰던 책이 아무것도 없습니다.</S.NotMent>
-            <S.WriteBtn>책 쓰기 {">"}</S.WriteBtn>
-          </S.Wrapper>
-        </>
+        <None length={data.length} />
       ) : (
         <>
-          <S.TopBar>
-            <S.TopBarContainer>
-              <div>
-                <span>
-                  {localStorage ? localStorage.getItem("sellery-name") : ""} 님
-                </span>
-                <text>|</text>
-                <aside>쓰고있던 작품 ({data.length}개)</aside>
-              </div>
-              <button>새책 쓰기</button>
-            </S.TopBarContainer>
-          </S.TopBar>
+          <>
+            <S.TopBar>
+              <S.TopBarContainer>
+                <div>
+                  <span>
+                    {localStorage ? localStorage.getItem("sellery-name") : ""}{" "}
+                    님
+                  </span>
+                  <span>|</span>
+                  <aside>쓰고있던 작품 ({data.length}개)</aside>
+                </div>
+                <button>새책 쓰기</button>
+              </S.TopBarContainer>
+            </S.TopBar>
+          </>
+          <>
+            <WRAPPER>
+              <S.GridContainer>
+                {data.map((obj, index) => (
+                  <BookCard
+                    key={index}
+                    title={obj.title}
+                    genre={obj.genre}
+                    src={obj.coverImg}
+                    id={obj["_id"]}
+                    date={obj.date}
+                  />
+                ))}
+              </S.GridContainer>
+            </WRAPPER>
+          </>
         </>
       )}
     </>
