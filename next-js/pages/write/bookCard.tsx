@@ -1,6 +1,7 @@
 import { getDate } from "../../src/utils/date";
 import * as S from "./styles";
 import { DOMAIN } from "./../../src/api/export";
+import { useRouter } from "next/dist/client/router";
 
 interface props {
   title: string;
@@ -11,6 +12,7 @@ interface props {
 }
 
 export default function BookCard({ title, genre, id, src, date }: props) {
+  const router = useRouter();
   return (
     <S.CardWrapper>
       <img src={DOMAIN + src} alt="" />
@@ -19,7 +21,9 @@ export default function BookCard({ title, genre, id, src, date }: props) {
         <h3>{title}</h3>
         <time>마지막 수정 {getDate(date)}</time>
         <div>
-          <button>이어쓰기</button>
+          <button onClick={() => router.push(`/write/new/${id}`)}>
+            이어쓰기
+          </button>
           <button>정보수정</button>
         </div>
       </S.Infor>

@@ -74,7 +74,7 @@ router
   .post(checkToken, async (req, res, next) => {
     try {
       const book = await Book.findOne({ _id: req.body.id });
-      res.status(201).json(book.contents);
+      res.status(201).json({ contents: book.contents, title: book.title });
     } catch (error) {
       console.log(error);
       next(error);

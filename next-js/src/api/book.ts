@@ -31,4 +31,29 @@ export default {
       data: obj,
     });
   },
+  getTempContent(id) {
+    return request({
+      url: "/book/write",
+      method: "post",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: {
+        id: id,
+      },
+    });
+  },
+  putTempContent(content, id) {
+    return request({
+      url: "/book/write",
+      method: "put",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: {
+        contents: content,
+        id: id,
+      },
+    });
+  },
 };
