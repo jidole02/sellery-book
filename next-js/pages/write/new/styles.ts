@@ -157,6 +157,7 @@ export const ContentContaienr = styled(CONTAIENR)`
     outline: none;
     margin-top: 40px;
     height: auto;
+    line-height:25px;
     &::-webkit-scrollbar {
       display: none;
     }

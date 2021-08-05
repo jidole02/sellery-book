@@ -21,10 +21,13 @@ export default function WriteContentPage() {
           toast.error("정보를 불러오는데 실패히였습니다.");
         });
   }, [router.query.id]);
+  useEffect(() => {
+    resizingById();
+  }, [content]);
   const putContent = (): void => {
     book
       .putTempContent(content, router.query.id)
-      .then((res) => {
+      .then(() => {
         toast.success("성공적으로 저장되었습니다");
       })
       .catch((err) => {
@@ -32,9 +35,9 @@ export default function WriteContentPage() {
         toast.error("저장에 실패하였습니다.");
       });
   };
-  const resizing = (event) => {
-    console.log(event.target.scrollHeight);
-    event.target.style.height = event.target.scrollHeight + "px";
+  const resizingById = () => {
+    const textarea = document.getElementById("textarea");
+    textarea.style.height = textarea.scrollHeight.toString() + "px";
   };
   const handleData = (event) => {
     setContent(event.target.value);
@@ -50,10 +53,10 @@ export default function WriteContentPage() {
         <h3>{title}</h3>
         <textarea
           onChange={handleData}
-          onKeyUp={resizing}
           onKeyDown={getKeyCode}
           placeholder="지금부터 자유롭게 책을 써보세요!"
           value={content}
+          id="textarea"
         />
         <S.ContentBottom>
           <aside>
