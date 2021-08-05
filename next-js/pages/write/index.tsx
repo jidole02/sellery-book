@@ -4,15 +4,16 @@ import book from "../../src/api/book";
 import None from "./none";
 import BookCard from "./bookCard";
 import { WRAPPER } from "../../styles";
+import { useRouter } from "next/router";
 
 export default function WritePage() {
   const [data, setData] = useState<any[]>([]);
+  const router = useRouter();
   useEffect(() => {
     book
       .getWriteBook()
       .then((res) => {
         setData(res.data);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -35,7 +36,9 @@ export default function WritePage() {
                   <span>|</span>
                   <aside>쓰고있던 작품 ({data.length}개)</aside>
                 </div>
-                <button>새책 쓰기</button>
+                <button onClick={() => router.push("/write/new")}>
+                  새책 쓰기
+                </button>
               </S.TopBarContainer>
             </S.TopBar>
           </>

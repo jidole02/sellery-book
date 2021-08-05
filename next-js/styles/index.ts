@@ -6,6 +6,7 @@ export const COLOR = {
   text: "#979797",
   yellow: "#ffcc57",
   border: "#dcdcdc",
+  background : "#FBFBFB",
 };
 
 export const WRAPPER = styled.div`
