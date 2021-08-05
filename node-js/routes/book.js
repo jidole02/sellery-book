@@ -39,7 +39,7 @@ router.post("/upload", checkToken, upload2.none(), async (req, res, next) => {
     const user = await User.findOne({ token: req.token });
     const id = user["_id"];
     const name = user.nickname;
-    const date = new Date()
+    const date = new Date();
     const book = await Book.create({
       writerId: id,
       writerName: name,
@@ -48,14 +48,38 @@ router.post("/upload", checkToken, upload2.none(), async (req, res, next) => {
       coverImg: req.body.coverImg,
       intro: req.body.intro,
       writerComment: req.body.writerComment,
-      date : date
+      date: date,
     });
-    return res.status(201).json(book);  
+    return res.status(201).json(book);
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
+
+router
+  .route("/write")
+  .put(checkToken, async (req, res, next) => {
+    try {
+      const book = await Book.updateOne(
+        { _id: req.body.id },
+        { contents: req.body.contents }
+      );
+      return res.status(201).json(book);
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  })
+  .post(checkToken, async (req, res, next) => {
+    try {
+      const book = await Book.findOne({ _id: req.body.id });
+      res.status(201).json(book.contents);
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  });
 
 router.route("/").get(checkToken, async (req, res, next) => {
   try {

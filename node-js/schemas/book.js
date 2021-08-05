@@ -16,7 +16,7 @@ const bookSchema = new Schema({
   },
   date: {
     type: Date,
-    required:true
+    required: true,
   },
   genre: {
     type: String,
@@ -33,6 +33,10 @@ const bookSchema = new Schema({
   writerComment: {
     type: String,
     required: true,
+  },
+  contents: {
+    type: String,
+    default : ""
   },
 });
 
