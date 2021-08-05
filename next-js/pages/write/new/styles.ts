@@ -36,6 +36,13 @@ export const LEFT_SIDE = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border: 1px solid ${COLOR.background};
+    cursor: pointer;
+  }
   & button {
     width: 100%;
     height: 360px;
@@ -70,7 +77,7 @@ export const RIGHT_SIDE = styled.div`
     border-radius: 3px;
     margin-top: 20px;
     font-weight: bold;
-    opacity: 0.5;
+    transition:0.5s;
   }
 `;
 

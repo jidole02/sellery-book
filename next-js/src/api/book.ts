@@ -11,4 +11,24 @@ export default {
       },
     });
   },
+  sendImg(data) {
+    return request({
+      url: "/book/upload/img",
+      method: "post",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: data,
+    });
+  },
+  uploadBook(obj) {
+    return request({
+      url: "/book/upload",
+      method: "post",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: obj,
+    });
+  },
 };

@@ -16,7 +16,7 @@ const bookSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now(),
+    required:true
   },
   genre: {
     type: String,

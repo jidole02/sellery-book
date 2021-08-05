@@ -28,7 +28,7 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-router.post("/upload/img", upload.single("img"), (req, res) => {
+router.post("/upload/img", checkToken, upload.single("img"), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
@@ -39,16 +39,18 @@ router.post("/upload", checkToken, upload2.none(), async (req, res, next) => {
     const user = await User.findOne({ token: req.token });
     const id = user["_id"];
     const name = user.nickname;
+    const date = new Date()
     const book = await Book.create({
       writerId: id,
       writerName: name,
       title: req.body.title,
       genre: req.body.genre,
-      coverImg: req.body.src,
+      coverImg: req.body.coverImg,
       intro: req.body.intro,
       writerComment: req.body.writerComment,
+      date : date
     });
-    return res.status(201).json(book);
+    return res.status(201).json(book);  
   } catch (error) {
     console.error(error);
     next(error);

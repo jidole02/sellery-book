@@ -22,7 +22,7 @@ export default function WritePage() {
   return (
     <>
       {data.length === 0 ? (
-        <None length={data.length} />
+        <None />
       ) : (
         <>
           <>
