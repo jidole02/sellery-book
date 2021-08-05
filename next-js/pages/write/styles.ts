@@ -54,33 +54,36 @@ export const TopBarContainer = styled(CONTAIENR)`
 
 export const GridContainer = styled(CONTAIENR)`
   display: grid;
-  grid-template-columns:1fr 1fr;
-  justify-items:center;
+  grid-template-columns: 530px 530px;
+  align-content: space-around;
+  justify-content: space-between;
   margin-top: 60px;
-  grid-row-gap:80px;
+  grid-row-gap: 80px;
 `;
 
 export const CardWrapper = styled.div`
-  width: 550px;
+  width: 530px;
   display: flex;
   height: 210px;
+  background: ${COLOR.background};
+  border-right: 2px solid ${COLOR.sub};
   & img {
     width: 140px;
     height: 100%;
     object-fit: cover;
-    box-shadow:0px 0px 10px rgb(190,190,190);
+    box-shadow: 0px 0px 10px rgb(190, 190, 190);
   }
 `;
 
 export const Infor = styled.div`
-  padding-left: 30px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 320px;
+  width: 360px;
   & span {
     color: ${COLOR.main};
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 15px;
   }
   & h3 {
@@ -94,7 +97,7 @@ export const Infor = styled.div`
   }
   & div {
     position: absolute;
-    bottom: 0;
+    bottom: 15px;
     right: 0;
     display: flex;
     gap: 15px;
