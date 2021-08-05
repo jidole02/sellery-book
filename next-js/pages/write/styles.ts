@@ -65,7 +65,6 @@ export const CardWrapper = styled.div`
   width: 530px;
   display: flex;
   height: 210px;
-  background: ${COLOR.background};
   border-right: 2px solid ${COLOR.sub};
   & img {
     width: 140px;
