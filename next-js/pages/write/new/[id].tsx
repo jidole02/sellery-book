@@ -60,7 +60,7 @@ export default function WriteContentPage() {
         />
         <S.ContentBottom>
           <aside>
-            엔터는 [enter]으로 처리됩니다. 출판시에는 엔터로 처리되어
+            엔터는 [enter]로 처리됩니다. 출판시에는 엔터처리 되어
             출판됩니다.
           </aside>
           <div>
