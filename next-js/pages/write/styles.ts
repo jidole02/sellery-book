@@ -62,7 +62,7 @@ export const GridContainer = styled(CONTAIENR)`
 `;
 
 export const CardWrapper = styled.div`
-  width: 530px;
+  width: 100%;
   display: flex;
   height: 210px;
   border-right: 2px solid ${COLOR.sub};
