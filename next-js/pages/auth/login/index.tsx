@@ -24,6 +24,10 @@ export default function LoginPage() {
       await auth
         .login({ email: email, pwd: pwd })
         .then((res) => {
+          if (!res.data.login) {
+            toast.error(res.data.message);
+            return;
+          }
           localStorage.setItem("sellery-token", res.data.token);
           router.push("/");
           toast.success("로그인 되었습니다.");
