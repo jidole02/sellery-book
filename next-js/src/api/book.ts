@@ -90,5 +90,15 @@ export default {
         authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
       },
     })
+  },
+  updateBookInfo(id,data){
+    return request({
+      url : `/book/upload/${id}`,      
+      method:'put',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data : data
+    })
   }
 };

@@ -54,17 +54,31 @@ export default function NewPage() {
     return true;
   };
   const uploadBook = (): void => {
+    const qs: any = getQueryStringObject();
     if (!allCheck()) {
       toast.info("모든 정보를 입력해주세요!");
       return;
     }
-    book
-      .uploadBook(data)
-      .then(() => {
-        toast.success("성공적으로 저장되었습니다!");
-        router.push("/write");
-      })
-      .catch((err) => console.log(err));
+    if (qs.update) {
+      book
+        .updateBookInfo(qs.id, data)
+        .then(() => {
+          toast.success("정보가 수정되었습니다.");
+          router.push("/write");
+        })
+        .catch((err) => {
+          toast.error("에러가 발생하였습니다.");
+          console.log(err);
+        });
+    } else {
+      book
+        .uploadBook(data)
+        .then(() => {
+          toast.success("성공적으로 저장되었습니다!");
+          router.push("/write");
+        })
+        .catch((err) => console.log(err));
+    }
   };
   useEffect(() => {
     const qs: any = getQueryStringObject();
