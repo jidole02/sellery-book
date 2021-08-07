@@ -56,4 +56,17 @@ export default {
       },
     });
   },
+  deleteBook(password, id) {
+    return request({
+      url: "/book/write",
+      method: "delete",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: {
+        password: password,
+        id: id,
+      },
+    });
+  },
 };

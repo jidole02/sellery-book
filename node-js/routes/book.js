@@ -95,10 +95,12 @@ router
                   message: "비밀번호가 일치하지 않습니다",
                 });
               }
-              await Book.deleteOne({ _id: req.body.id });
-              return res
-                .status(201)
-                .json({ message: "정상적으로 삭제되었습니다." });
+              else{
+                await Book.deleteOne({ _id: req.body.id });
+                return res
+                  .status(201)
+                  .json({ message: "정상적으로 삭제되었습니다." });
+              }
             })
             .catch((err) => {
               res.status(400).send(err);

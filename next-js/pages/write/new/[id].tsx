@@ -47,6 +47,21 @@ export default function WriteContentPage() {
       setContent(content + ` [enter]`);
     }
   };
+  const deleteBook = () => {
+    if (confirm("정말로 삭제하시겠습니까? (삭제 후 복구가 불가능합니다.)")) {
+      const password = prompt("비밀번호를 입력해주세요.");
+      book
+        .deleteBook(password, router.query.id)
+        .then((res) => {
+          toast.success("정상적으로 삭제되었습니다.");
+          router.push("/write");
+        })
+        .catch((err) => {
+          if (err.response.status === 400) alert("비밀번호가 틀렸습니다.");
+          else toast.error("에러가 발생하였습니다.");
+        });
+    }
+  };
   return (
     <S.ContentWrapper>
       <S.ContentContaienr>
@@ -60,11 +75,10 @@ export default function WriteContentPage() {
         />
         <S.ContentBottom>
           <aside>
-            엔터는 [enter]로 처리됩니다. 출판시에는 엔터처리 되어
-            출판됩니다.
+            엔터는 [enter]로 처리됩니다. 출판시에는 엔터처리 되어 출판됩니다.
           </aside>
           <div>
-            <button>책 삭제</button>
+            <button onClick={deleteBook}>책 삭제</button>
             <button onClick={putContent}>임시저장</button>
             <button>출판하기</button>
           </div>
