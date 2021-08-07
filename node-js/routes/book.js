@@ -83,7 +83,28 @@ router
   })
   .delete(checkToken, async (req, res, next) => {
     try {
-      await Book.deleteOne({ _id: req.body.id });
+      await User.findOne({ token: req.token }, (err, user) => {
+        if (!user) return res.status(403);
+        else {
+          user
+            .comparePassword(req.body.password)
+            .then(async (isMatch) => {
+              console.log(isMatch);
+              if (!isMatch) {
+                return res.status(400).json({
+                  message: "비밀번호가 일치하지 않습니다",
+                });
+              }
+              await Book.deleteOne({ _id: req.body.id });
+              return res
+                .status(201)
+                .json({ message: "정상적으로 삭제되었습니다." });
+            })
+            .catch((err) => {
+              res.status(400).send(err);
+            });
+        }
+      });
       res.status(201);
     } catch (error) {
       console.log(error);
