@@ -1,9 +1,12 @@
+import Top from "./top";
 import * as S from "./styles";
 
 export default function ManiPage() {
   return (
-    <>
-    메인페이지
-    </>
+    <S.Wrapper>
+      <S.Container>
+        <Top />
+      </S.Container>
+    </S.Wrapper>
   );
 }

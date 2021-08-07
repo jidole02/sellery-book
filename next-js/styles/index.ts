@@ -4,7 +4,7 @@ export const COLOR = {
   main: "#FF3D00",
   sub: "#FF7E56",
   text: "#979797",
-  yellow: "#ffcc57",
+  yellow: "#FF8426",
   border: "#dcdcdc",
   background : "#FBFBFB",
 };
