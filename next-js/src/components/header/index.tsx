@@ -34,6 +34,9 @@ export default function Header() {
           if (res.data.checked) {
             setName(res.data.username);
             localStorage.setItem("sellery-name", res.data.username);
+          } else {
+            localStorage.setItem("sellery-token", "");
+            localStorage.setItem("sellery-name", "");
           }
         })
         .catch((err) => {
