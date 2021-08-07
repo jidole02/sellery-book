@@ -45,3 +45,7 @@ button{
   display: flex;
   align-items: center;
 }
+
+img{
+  object-fit:cover;
+}

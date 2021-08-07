@@ -122,19 +122,3 @@ width:100%;
 height:1px;
 background:#DCDCDC;
 `
-
-export const IconWrapper = styled.div`
-  display: flex;
-  gap: 15px;
-  & div {
-    font-size: 14px;
-    margin-top: 19px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: ${COLOR.text};
-    &:last-of-type {
-      color: ${COLOR.yellow};
-    }
-  }
-`;

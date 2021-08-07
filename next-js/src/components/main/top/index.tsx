@@ -3,6 +3,7 @@ import * as S from "./styles";
 import useInterval from "../../../utils/useInterval";
 import EyeIcon from "../../../assets/eye";
 import StarIcon from "../../../assets/star";
+import IconContainer from "./../../iconContainer/index";
 
 export default function Top() {
   const [data, setData] = useState<any[]>([1, 2, 3, 4]);
@@ -62,30 +63,16 @@ export default function Top() {
             <div>
               <h3>많은 이들을 기리며</h3>
               <span>설운도 작가</span>
-              <S.IconWrapper>
-                <div>
-                  <EyeIcon /> 400
-                </div>
-                <div>
-                  <StarIcon /> 200
-                </div>
-              </S.IconWrapper>
+              <IconContainer see={100} rate={200} margin={19} />
             </div>
           </article>
-          <S.Line/>
+          <S.Line />
           <article>
             <img src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2018/0309/IE002297749_STD.jpg" />
             <div>
               <h3>많은 이들을 기리며</h3>
               <span>설운도 작가</span>
-              <S.IconWrapper>
-                <div>
-                  <EyeIcon /> 400
-                </div>
-                <div>
-                  <StarIcon /> 200
-                </div>
-              </S.IconWrapper>
+              <IconContainer see={100} rate={200} margin={19} />
             </div>
           </article>
         </section>
