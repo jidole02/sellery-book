@@ -36,7 +36,15 @@ const bookSchema = new Schema({
   },
   contents: {
     type: String,
-    default : ""
+    default: "",
+  },
+  views: {
+    type: Number,
+    default: 0,
+  },
+  rate: {
+    type: Number,
+    default: 0.0,
   },
 });
 
