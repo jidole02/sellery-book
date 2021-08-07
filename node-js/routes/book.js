@@ -159,6 +159,7 @@ router.route("/publish").post(checkToken, async (req, res, next) => {
                 message: "비밀번호가 틀렸습니다.",
               });
             } else {
+                console.log(isMatch)
               const book = await Book.findOne({ _id: req.body.id });
               const date = new Date();
               const pBook = await publishBook.create({

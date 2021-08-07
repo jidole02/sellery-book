@@ -69,10 +69,10 @@ export default {
       },
     });
   },
-  publishBook(password,id){
+  publishBook(password, id) {
     return request({
-      url : '/book/publish',
-      method:"post",
+      url: "/book/publish",
+      method: "post",
       headers: {
         authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
       },
@@ -80,25 +80,25 @@ export default {
         password: password,
         id: id,
       },
-    })
+    });
   },
-  getBookInfo(id){
+  getBookInfo(id) {
     return request({
-      url:`/book/upload/${id}`,
-      method:'get',
+      url: `/book/upload/${id}`,
+      method: "get",
       headers: {
         authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
       },
-    })
+    });
   },
-  updateBookInfo(id,data){
+  updateBookInfo(id, data) {
     return request({
-      url : `/book/upload/${id}`,      
-      method:'put',
+      url: `/book/upload/${id}`,
+      method: "put",
       headers: {
         authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
       },
-      data : data
-    })
-  }
+      data: data,
+    });
+  },
 };

@@ -65,9 +65,10 @@ export default function WriteContentPage() {
   const publishBook = () => {
     if (confirm("정말로 출판하시겠습니까? (출판 후 수정은 불가합니다.)")) {
       const password = prompt("비밀번호를 입력해주세요.");
+      if (!password) return alert("비밀번호가 틀렸습니다.");
       book
         .publishBook(password, router.query.id)
-        .then(() => {
+        .then((res) => {
           toast.success("축하합니다! 책이 출판되었습니다!");
           router.push("/write");
         })
