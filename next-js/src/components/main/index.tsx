@@ -8,11 +8,6 @@ export default function ManiPage() {
       <S.Container>
         <Top />
         <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
-        <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
-        <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
-        <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
-        <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
-        <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
       </S.Container>
     </S.Wrapper>
   );

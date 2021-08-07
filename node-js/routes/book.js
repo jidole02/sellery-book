@@ -170,6 +170,7 @@ router.route("/publish").post(checkToken, async (req, res, next) => {
                 coverImg: book.coverImg,
                 intro: book.intro,
                 writerComment: book.writerComment,
+                contents : book.contents,
                 date: date,
               });
               await Book.deleteOne({ _id: req.body.id });

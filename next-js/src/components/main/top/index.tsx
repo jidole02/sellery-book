@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 import useInterval from "../../../utils/useInterval";
-import EyeIcon from "../../../assets/eye";
-import StarIcon from "../../../assets/star";
 import IconContainer from "./../../iconContainer/index";
+import pbook from "../../../api/pbook";
+import { DOMAIN } from "./../../../api/export";
+import SmallCard from "./smallCard";
 
 export default function Top() {
-  const [data, setData] = useState<any[]>([1, 2, 3, 4]);
+  const [data, setData] = useState<any[]>([]);
+  useEffect(() => {
+    pbook.getNewBook().then((res) => {
+      setData(res.data);
+    });
+  }, []);
   const ment = [
     {
       m1: "오늘같은 날",
@@ -36,7 +42,7 @@ export default function Top() {
         <S.Wrapper>
           <>
             <S.Slider style={{ transform: `translateX(-${page * 25}%)` }}>
-              {data.map((e, index) => (
+              {data.map((obj, index) => (
                 <S.Card key={index}>
                   <S.Infor>
                     <h1>
@@ -45,11 +51,11 @@ export default function Top() {
                       {ment[index].m2}
                     </h1>
                     <span>
-                      <mark>김지현</mark>작가 신작!
+                      <mark>{obj.writerName}</mark>작가 신작
                     </span>
                     <button>바로가기</button>
                   </S.Infor>
-                  <S.ConverImg src="https://i.pinimg.com/564x/bf/69/78/bf6978d06ec0087b3f9d2502b25b3cbe.jpg" />
+                  <S.ConverImg src={DOMAIN + obj.coverImg} />
                 </S.Card>
               ))}
             </S.Slider>
@@ -58,23 +64,19 @@ export default function Top() {
       </>
       <>
         <section>
-          <article>
-            <img src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2018/0309/IE002297749_STD.jpg" />
-            <div>
-              <h3>많은 이들을 기리며</h3>
-              <span>설운도 작가</span>
-              <IconContainer see={100} rate={200} margin={19} />
-            </div>
-          </article>
-          <S.Line />
-          <article>
-            <img src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2018/0309/IE002297749_STD.jpg" />
-            <div>
-              <h3>많은 이들을 기리며</h3>
-              <span>설운도 작가</span>
-              <IconContainer see={100} rate={200} margin={19} />
-            </div>
-          </article>
+          {data.length > 0 &&
+            data
+              .slice(0, 2)
+              .map((obj, index) => (
+                <SmallCard
+                  key={index}
+                  title={obj.title}
+                  src={DOMAIN + obj.coverImg}
+                  name={obj.writerName}
+                  see={obj.views}
+                  rate={obj.rate}
+                />
+              ))}
         </section>
       </>
     </S.TopBar>

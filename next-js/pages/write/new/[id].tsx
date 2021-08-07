@@ -42,11 +42,6 @@ export default function WriteContentPage() {
   const handleData = (event) => {
     setContent(event.target.value);
   };
-  const getKeyCode = (event) => {
-    if (event.keyCode === 13) {
-      setContent(content + ` [enter]`);
-    }
-  };
   const deleteBook = () => {
     if (confirm("정말로 삭제하시겠습니까? (삭제 후 복구가 불가능합니다.)")) {
       const password = prompt("비밀번호를 입력해주세요.");
@@ -84,15 +79,12 @@ export default function WriteContentPage() {
         <h3>{title}</h3>
         <textarea
           onChange={handleData}
-          onKeyDown={getKeyCode}
           placeholder="지금부터 자유롭게 책을 써보세요!"
           value={content}
           id="textarea"
         />
         <S.ContentBottom>
-          <aside>
-            엔터는 [enter]로 처리됩니다. 출판시에는 엔터처리 되어 출판됩니다.
-          </aside>
+          <aside>도서는 1000자 이상 작성 후 출판 가능합니다.</aside>
           <div>
             <button onClick={deleteBook}>책 삭제</button>
             <button onClick={putContent}>임시저장</button>
