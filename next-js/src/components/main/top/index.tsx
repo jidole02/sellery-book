@@ -65,9 +65,8 @@ export default function Top() {
       <>
         <section>
           {data.length > 0 &&
-            data
-              .slice(0, 2)
-              .map((obj, index) => (
+            data.slice(0, 2).map((obj, index) => (
+              <>
                 <SmallCard
                   key={index}
                   title={obj.title}
@@ -76,7 +75,9 @@ export default function Top() {
                   see={obj.views}
                   rate={obj.rate}
                 />
-              ))}
+                {index === 0 && <S.Line />}
+              </>
+            ))}
         </section>
       </>
     </S.TopBar>
