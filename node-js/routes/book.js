@@ -5,7 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const Book = require("../schemas/book");
 const { User } = require("../schemas/user");
-const publishBook = require("./publishBook");
+const publishBook = require("../schemas/publishBook");
 
 const router = express.Router();
 
