@@ -35,22 +35,56 @@ router.post("/upload/img", checkToken, upload.single("img"), (req, res) => {
 });
 
 const upload2 = multer();
-router.post("/upload", checkToken, upload2.none(), async (req, res, next) => {
+router
+  .route("/upload")
+  .post(checkToken, upload2.none(), async (req, res, next) => {
+    try {
+      const user = await User.findOne({ token: req.token });
+      const id = user["_id"];
+      const name = user.nickname;
+      const date = new Date();
+      const book = await Book.create({
+        writerId: id,
+        writerName: name,
+        title: req.body.title,
+        genre: req.body.genre,
+        coverImg: req.body.coverImg,
+        intro: req.body.intro,
+        writerComment: req.body.writerComment,
+        date: date,
+      });
+      return res.status(201).json(book);
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  })
+  .put(checkToken, upload2.none(), async (req, res, next) => {
+    try {
+      const user = await User.findOne({ token: req.token });
+      const id = user["_id"];
+      const date = new Date();
+      const book = await Book.updateOne(
+        { writerId: id },
+        {
+          title: req.body.title,
+          genre: req.body.genre,
+          coverImg: req.body.coverImg,
+          intro: req.body.intro,
+          writerComment: req.body.writerComment,
+          date: date,
+        }
+      );
+      return res.status(201).json(book);
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  });
+
+router.route("/upload/:id").get(checkToken, async (req, res, next) => {
   try {
-    const user = await User.findOne({ token: req.token });
-    const id = user["_id"];
-    const name = user.nickname;
-    const date = new Date();
-    const book = await Book.create({
-      writerId: id,
-      writerName: name,
-      title: req.body.title,
-      genre: req.body.genre,
-      coverImg: req.body.coverImg,
-      intro: req.body.intro,
-      writerComment: req.body.writerComment,
-      date: date,
-    });
+    const book = await Book.find({ _id: req.params.id });
     return res.status(201).json(book);
   } catch (error) {
     console.error(error);
