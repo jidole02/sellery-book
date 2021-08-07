@@ -81,5 +81,14 @@ export default {
         id: id,
       },
     })
+  },
+  getBookInfo(id){
+    return request({
+      url:`/book/upload/${id}`,
+      method:'get',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+    })
   }
 };

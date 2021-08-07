@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GenreArr } from "../../../src/utils/export";
 import Description from "./description";
 import * as S from "./styles";
@@ -7,6 +7,7 @@ import book from "../../../src/api/book";
 import { DOMAIN } from "./../../../src/api/export";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { getQueryStringObject } from "../../../src/utils/getQuery";
 
 export default function NewPage() {
   const [data, setData] = useState({
@@ -14,8 +15,9 @@ export default function NewPage() {
     title: "",
     intro: "",
     writerComment: "",
-    genre: GenreArr[0],
+    genre: "",
   });
+  const { coverImg, title, intro, writerComment, genre } = data;
   const router = useRouter();
   const handleData = (event): void => {
     const { name, value } = event.target;
@@ -64,6 +66,29 @@ export default function NewPage() {
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    const qs: any = getQueryStringObject();
+    if (qs.update) {
+      book
+        .getBookInfo(qs.id)
+        .then((res) => {
+          const data = res.data;
+          setData({
+            title: data.title,
+            intro: data.intro,
+            coverImg: data.coverImg,
+            writerComment: data.writerComment,
+            genre: data.genre,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("정보를 불러오는데 실패하였습니다.");
+        });
+    } else {
+      setData({ ...data, genre: GenreArr[0] });
+    }
+  }, []);
   return (
     <S.Wrapper>
       <input
@@ -80,7 +105,7 @@ export default function NewPage() {
             <S.LEFT_SIDE>
               {data.coverImg ? (
                 <img
-                  src={DOMAIN + data.coverImg}
+                  src={DOMAIN + coverImg}
                   onClick={() => fileUpload("coverImg")}
                 />
               ) : (
@@ -103,6 +128,7 @@ export default function NewPage() {
                     placeholder="책 제목을 입력해주세요."
                     name="title"
                     onChange={handleData}
+                    value={title}
                   />
                 </S.WriteWrapper>
                 <S.WriteWrapper>
@@ -111,6 +137,7 @@ export default function NewPage() {
                     placeholder="책 내용을 간략히 소개해주세요!"
                     name="intro"
                     onChange={handleData}
+                    value={intro}
                   />
                 </S.WriteWrapper>
                 <S.WriteWrapper>
@@ -119,17 +146,24 @@ export default function NewPage() {
                     placeholder="독자에게 하고싶은 말을 적어주세요."
                     name="writerComment"
                     onChange={handleData}
+                    value={writerComment}
                   />
                 </S.WriteWrapper>
                 <S.WriteWrapper>
                   <span>장르</span>
-                  <select name="genre" onChange={handleData}>
-                    {GenreArr.map((genre, index) => (
-                      <option key={index} value={genre}>
-                        {genre}
-                      </option>
-                    ))}
-                  </select>
+                  {genre && (
+                    <select
+                      name="genre"
+                      onChange={handleData}
+                      defaultValue={genre}
+                    >
+                      {GenreArr.map((genre, index) => (
+                        <option key={index} value={genre}>
+                          {genre}
+                        </option>
+                      ))}
+                    </select>
+                  )}
                 </S.WriteWrapper>
                 <button
                   style={allCheck() ? { opacity: "1" } : { opacity: "0.5" }}

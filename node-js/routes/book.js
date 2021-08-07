@@ -58,14 +58,24 @@ router
       console.error(error);
       next(error);
     }
+  });
+
+router
+  .route("/upload/:id")
+  .get(checkToken, async (req, res, next) => {
+    try {
+      const book = await Book.findOne({ _id: req.params.id });
+      return res.status(201).json(book);
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
   })
   .put(checkToken, upload2.none(), async (req, res, next) => {
     try {
-      const user = await User.findOne({ token: req.token });
-      const id = user["_id"];
       const date = new Date();
       const book = await Book.updateOne(
-        { writerId: id },
+        { _id: req.params.id },
         {
           title: req.body.title,
           genre: req.body.genre,
@@ -81,16 +91,6 @@ router
       next(error);
     }
   });
-
-router.route("/upload/:id").get(checkToken, async (req, res, next) => {
-  try {
-    const book = await Book.find({ _id: req.params.id });
-    return res.status(201).json(book);
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
 
 router
   .route("/write")

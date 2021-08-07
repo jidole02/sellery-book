@@ -9,30 +9,28 @@ import { toast } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const [login, setLogin] = useState<boolean>(false);
+  const callbackLogin = () => {
+    router.push("/auth/login");
+    toast.info("로그인 후 이용해주세요.");
+  };
   useEffect(() => {
     const token = localStorage.getItem("sellery-token");
-    if (!token) setLogin(false);
+    if (!token) callbackLogin();
     else {
       auth
         .tokenCheck(token)
         .then((res) => {
           if (res.data.checked) {
-            setLogin(true);
+            if (!res.data.checked) {
+              if (router.pathname.includes("/write")) {
+                callbackLogin();
+              }
+            }
           } else {
-            setLogin(false);
+            callbackLogin();
           }
         })
-        .catch(() => setLogin(false));
-    }
-  }, [router.pathname]);
-  useEffect(() => {
-    const path = router.pathname;
-    if (!login) {
-      if (path.includes("/write")) {
-        router.push("/auth/login");
-        toast.info("로그인 후 이용해주세요.");
-      }
+        .catch(() => callbackLogin());
     }
   }, [router.pathname]);
   return (

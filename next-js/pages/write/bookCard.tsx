@@ -24,7 +24,7 @@ export default function BookCard({ title, genre, id, src, date }: props) {
           <button onClick={() => router.push(`/write/new/${id}`)}>
             이어쓰기
           </button>
-          <button>정보수정</button>
+          <button onClick={() => router.push(`/write/new?update=true&id=${id}`)}>정보수정</button>
         </div>
       </S.Infor>
     </S.CardWrapper>
