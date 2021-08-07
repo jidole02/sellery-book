@@ -15,22 +15,22 @@ function MyApp({ Component, pageProps }) {
   };
   useEffect(() => {
     const token = localStorage.getItem("sellery-token");
-    if (!token) callbackLogin();
-    else {
-      auth
-        .tokenCheck(token)
-        .then((res) => {
-          if (res.data.checked) {
-            if (!res.data.checked) {
-              if (router.pathname.includes("/write")) {
+    if (router.pathname.includes("/write")) {
+      if (!token) callbackLogin();
+      else {
+        auth
+          .tokenCheck(token)
+          .then((res) => {
+            if (res.data.checked) {
+              if (!res.data.checked) {
                 callbackLogin();
               }
+            } else {
+              callbackLogin();
             }
-          } else {
-            callbackLogin();
-          }
-        })
-        .catch(() => callbackLogin());
+          })
+          .catch(() => callbackLogin());
+      }
     }
   }, [router.pathname]);
   return (
