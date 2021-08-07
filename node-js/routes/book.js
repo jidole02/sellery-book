@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const Book = require("../schemas/book");
 const { User } = require("../schemas/user");
+const publishBook = require("./publishBook");
 
 const router = express.Router();
 
@@ -79,7 +80,38 @@ router
       console.log(error);
       next(error);
     }
+  })
+  .delete(checkToken, async (req, res, next) => {
+    try {
+      await Book.deleteOne({ _id: req.body.id });
+      res.status(201);
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
   });
+
+router.route("/publish").post(checkToken, async (req, res, next) => {
+  try {
+    const book = await Book.findOne({ _id: req.body.id });
+    const date = new Date();
+    const pBook = await publishBook.create({
+      writerId: book.writerId,
+      writerName: book.writerName,
+      title: book.title,
+      genre: book.genre,
+      coverImg: book.coverImg,
+      intro: book.intro,
+      writerComment: book.writerComment,
+      date: date,
+    });
+    Book.deleteOne({ _id: req.body.id });
+    res.status(201).json(pBook);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
 
 router.route("/").get(checkToken, async (req, res, next) => {
   try {
