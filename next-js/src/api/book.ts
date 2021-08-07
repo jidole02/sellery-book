@@ -69,4 +69,17 @@ export default {
       },
     });
   },
+  publishBook(password,id){
+    return request({
+      url : '/book/publish',
+      method:"post",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: {
+        password: password,
+        id: id,
+      },
+    })
+  }
 };

@@ -89,13 +89,11 @@ router
           user
             .comparePassword(req.body.password)
             .then(async (isMatch) => {
-              console.log(isMatch);
               if (!isMatch) {
                 return res.status(400).json({
                   message: "비밀번호가 일치하지 않습니다",
                 });
-              }
-              else{
+              } else {
                 await Book.deleteOne({ _id: req.body.id });
                 return res
                   .status(201)
@@ -116,20 +114,36 @@ router
 
 router.route("/publish").post(checkToken, async (req, res, next) => {
   try {
-    const book = await Book.findOne({ _id: req.body.id });
-    const date = new Date();
-    const pBook = await publishBook.create({
-      writerId: book.writerId,
-      writerName: book.writerName,
-      title: book.title,
-      genre: book.genre,
-      coverImg: book.coverImg,
-      intro: book.intro,
-      writerComment: book.writerComment,
-      date: date,
+    await User.findOne({ token: req.token }, (err, user) => {
+      if (!user) return res.status(403);
+      else {
+        user
+          .comparePassword(req.body.password)
+          .then(async (isMatch) => {
+            if (!isMatch) {
+              return res.status(400).json({
+                message: "비밀번호가 틀렸습니다.",
+              });
+            } else {
+              const book = await Book.findOne({ _id: req.body.id });
+              const date = new Date();
+              const pBook = await publishBook.create({
+                writerId: book.writerId,
+                writerName: book.writerName,
+                title: book.title,
+                genre: book.genre,
+                coverImg: book.coverImg,
+                intro: book.intro,
+                writerComment: book.writerComment,
+                date: date,
+              });
+              await Book.deleteOne({ _id: req.body.id });
+              res.status(201).json(pBook);
+            }
+          })
+          .catch((err) => res.status(400).send(err));
+      }
     });
-    Book.deleteOne({ _id: req.body.id });
-    res.status(201).json(pBook);
   } catch (error) {
     console.log(error);
     next(error);
