@@ -65,7 +65,7 @@ export default function WriteContentPage() {
         .publishBook(password, router.query.id)
         .then((res) => {
           toast.success("축하합니다! 책이 출판되었습니다!");
-          router.push("/write");
+          router.push("/");
         })
         .catch((err) => {
           if (err.response.status === 400) alert("비밀번호가 틀렸습니다.");

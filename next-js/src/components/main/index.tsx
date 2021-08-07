@@ -7,7 +7,10 @@ export default function ManiPage() {
     <S.Wrapper>
       <S.Container>
         <Top />
-        <CardList title="오늘의 신작" data={[1, 2, 3, 4, 5]} />
+        <CardList title="오늘의 신작" condition={"new"} />
+        <CardList title="오늘의 신작" condition={"new"} />
+        <CardList title="오늘의 신작" condition={"new"} />
+        <CardList title="오늘의 신작" condition={"new"} />
       </S.Container>
     </S.Wrapper>
   );

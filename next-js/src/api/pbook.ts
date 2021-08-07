@@ -7,4 +7,10 @@ export default {
       method: "get",
     });
   },
+  getPBook(condition){
+      return request({
+          url:`/pbook/get/${condition}`,
+          method:'get'
+      })
+  }
 };
