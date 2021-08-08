@@ -28,6 +28,7 @@ button,input{
 
 button{
   cursor: pointer;
+  background:none;
 }
 
 #flex-center{

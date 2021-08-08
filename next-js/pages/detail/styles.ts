@@ -1,1 +1,145 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
+import { COLOR, CONTAIENR, WRAPPER } from "../../styles";
+
+export const Wrapper = styled(WRAPPER)`
+  padding-top: 65px;
+`;
+
+export const Container = styled(CONTAIENR)`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const BookInfo = styled.section`
+  width: 100%;
+  display: flex;
+  gap: 28px;
+  height: 300px;
+  position: relative;
+  & img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow:0px 0px 10px rgb(0,0,0,0.1);
+  }
+  & article {
+    display: flex;
+    flex-direction: column;
+    & aside {
+      color: ${COLOR.main};
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 22px;
+    }
+    & h3 {
+      color: black;
+      font-size: 28px;
+      font-weight: 800;
+      margin-top: 18px;
+      margin-bottom: 15px;
+    }
+    & span {
+      color: ${COLOR.text};
+      font-size: 16px;
+      & b {
+        margin: 0 10px;
+        font-weight: 500;
+      }
+    }
+  }
+  & button {
+    width: 167px;
+    height: 46px;
+    border: 1px solid ${COLOR.sub};
+    color: ${COLOR.sub};
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+`;
+
+interface lineProps {
+  margin: number;
+}
+
+export const Line = styled.div<lineProps>`
+  width: 100%;
+  height: 1px;
+  background: #dcdcdc;
+  margin-top: ${(res) => `${res.margin}px`};
+`;
+
+export const IntroComment = styled.div`
+  margin-top: 40px;
+  background: #f8f8f8;
+  border: 1px solid #cccccc;
+  padding: 34px 42px;
+  & h6 {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 23px;
+  }
+  & p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+  }
+`;
+
+export const BottomContainer = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  & h4 {
+    font-size: 17px;
+    color: ${COLOR.text};
+    &:last-of-type{
+        margin-top:50px;
+    }
+  }
+  & p {
+    margin-top: 30px;
+  }
+`;
+
+export const ReviewWrapper = styled.div`
+width:100%;
+display:flex;
+flex-direction:column;
+padding-top:40px;
+align-items:center;
+& h3{
+    font-size:23px;
+    font-weight:bold;
+    color:black;
+}
+& aside{
+    font-size:17px;
+    font-weight:bold;
+    color:${COLOR.text};
+    margin-top:13px;
+}
+& textarea{
+    border:1px solid #CCCCCC;
+    background: #F8F8F8;
+    width:100%;
+    padding:30px 40px;
+    color:black;
+    font-size:17px;
+    margin-top:60px;
+    resize:none;
+    margin-bottom:100px;
+    &::placeholder{
+        color:${COLOR.text};
+    }
+}
+`
+
+export const StarWrapper = styled.div`
+display:flex;
+gap:20px;
+margin-top:30px;
+`
