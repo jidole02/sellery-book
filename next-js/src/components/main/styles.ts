@@ -10,3 +10,9 @@ export const Container = styled(CONTAIENR)`
   flex-direction: column;
   padding-top: 30px;
 `;
+
+export const Slide = styled.img`
+width:100%;
+border-radius:5px;
+margin:50px 0;
+`

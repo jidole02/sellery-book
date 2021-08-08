@@ -4,7 +4,7 @@ export default function ErrPage() {
       <img
         src="/nothing.png"
         alt=""
-        style={{ width: "400px", height: "300px" }}
+        style={{ width: "350px", height: "350px" }}
       />
     </div>
   );

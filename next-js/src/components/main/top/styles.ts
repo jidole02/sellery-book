@@ -99,6 +99,10 @@ export const TopBar = styled.div`
       display: flex;
       gap: 27px;
       box-sizing: content-box;
+      &:first-of-type{
+        padding-bottom:30px;
+        border-bottom:1px solid #dcdcdc;
+      }
       & img {
         width: 80px;
         height: 120px;
