@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const COLOR = {
-  main: "#FF3D00",
-  sub: "#FF7E56",
+  main: "#FF0000",
+  sub: "#FF4600",
   text: "#979797",
   yellow: "#FF8426",
   border: "#dcdcdc",

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   height: 304px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 0px 6px rgb(0, 0, 0, 0.16);
+/*   box-shadow: 0px 0px 6px rgb(0, 0, 0, 0.16); */
   position: relative;
 `;
 
@@ -94,7 +94,7 @@ export const TopBar = styled.div`
     flex-direction: column;
     justify-content: space-between;
     box-sizing: content-box;
-    position:relative;
+    position: relative;
     & article {
       display: flex;
       gap: 27px;
@@ -106,19 +106,24 @@ export const TopBar = styled.div`
       }
       & h3 {
         font-size: 18px;
-        margin-top: 15px;
-        margin-bottom: 8px;
+        margin-top: 10px;
+        margin-bottom: 2px;
       }
       & span {
-        font-size: 15px;
+        font-size: 14px;
         color: ${COLOR.text};
+      }
+      & aside {
+        margin-top: 10px;
+        color: ${COLOR.main};
+        font-size: 13px;
       }
     }
   }
 `;
 
 export const Line = styled.div`
-width:100%;
-height:1px;
-background:#DCDCDC;
-`
+  width: 100%;
+  height: 1px;
+  background: #dcdcdc;
+`;

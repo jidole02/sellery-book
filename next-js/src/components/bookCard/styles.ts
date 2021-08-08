@@ -16,6 +16,11 @@ width:180px;
 & span{
     color:${COLOR.text};
     font-size:16px;
+    margin-top:7px;
+}
+& aside{
+    color:${COLOR.main};
+    font-size:13px;
     margin-top:11px;
 }
 `
