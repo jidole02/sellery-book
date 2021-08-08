@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { COLOR, CONTAIENR, WRAPPER } from "../../styles";
 
 export const Wrapper = styled(WRAPPER)`
-  padding-top: 65px;
+  padding-top: 35px;
 `;
 
 export const Container = styled(CONTAIENR)`
@@ -29,7 +29,7 @@ export const BookInfo = styled.section`
       color: ${COLOR.main};
       font-size: 17px;
       font-weight: bold;
-      margin-top: 22px;
+      margin-top: 32px;
     }
     & h3 {
       color: black;
@@ -75,12 +75,12 @@ export const IntroComment = styled.div`
   margin-top: 40px;
   background: #f8f8f8;
   border: 1px solid #cccccc;
-  padding: 34px 42px;
+  padding: 30px 42px;
   & h6 {
-    color: black;
-    font-size: 18px;
+    color: ${COLOR.text};
+    font-size: 17px;
     font-weight: bold;
-    margin-bottom: 23px;
+    margin-bottom: 18px;
   }
   & p {
     margin: 0;

@@ -24,8 +24,8 @@ export default function BigStarIcon({ check, callback }: props) {
           y2="1"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color={check ? COLOR.sub : "#d6d6d6"} />
-          <stop offset="1" stop-color={check ? COLOR.sub : "#dfdfdf"} />
+          <stop offset="0" stopColor={check ? COLOR.sub : "#d6d6d6"} />
+          <stop offset="1" stopColor={check ? COLOR.sub : "#dfdfdf"} />
         </linearGradient>
       </defs>
       <path
