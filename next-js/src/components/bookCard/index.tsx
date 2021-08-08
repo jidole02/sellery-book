@@ -1,10 +1,12 @@
 import IconContainer from "../iconContainer";
 import * as S from "./styles";
 import { DOMAIN } from "./../../api/export";
+import { useRouter } from 'next/dist/client/router';
 
-export default function BookCard({ title, src, see, rate, name,genre }) {
+export default function BookCard({ title, src, see, rate, name,genre,id }) {
+  const router = useRouter();
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={()=>router.push(`/detail/${id}`)}>
       <img src={DOMAIN + src} />
       <h3>{title}</h3>
       <span>{name} 작가 </span>

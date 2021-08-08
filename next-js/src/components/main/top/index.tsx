@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import * as S from "./styles";
 import useInterval from "../../../utils/useInterval";
-import IconContainer from "./../../iconContainer/index";
 import pbook from "../../../api/pbook";
 import { DOMAIN } from "./../../../api/export";
 import SmallCard from "./smallCard";
+import { useRouter } from 'next/dist/client/router';
 
 export default function Top() {
   const [data, setData] = useState<any[]>([]);
+  const router = useRouter();
   useEffect(() => {
     pbook.getNewBook().then((res) => {
       setData(res.data);
@@ -53,7 +54,7 @@ export default function Top() {
                     <span>
                       <mark>{obj.writerName}</mark>작가 신작
                     </span>
-                    <button>바로가기</button>
+                    <button onClick={()=>router.push(`/detail/${obj["_id"]}`)}>바로가기</button>
                   </S.Infor>
                   <S.ConverImg src={DOMAIN + obj.coverImg} />
                 </S.Card>
@@ -70,6 +71,7 @@ export default function Top() {
               .map((obj, index) => (
                 <SmallCard
                   key={index}
+                  id={obj["_id"]}
                   title={obj.title}
                   src={DOMAIN + obj.coverImg}
                   name={obj.writerName}

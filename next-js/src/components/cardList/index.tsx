@@ -28,6 +28,7 @@ export default function CardList({ title, condition }: props) {
             key={index}
             name={obj.writerName}
             genre={obj.genre}
+            id={obj["_id"]}
           />
         ))}
       </S.List>

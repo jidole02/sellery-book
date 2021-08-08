@@ -1,8 +1,10 @@
 import IconContainer from "./../../iconContainer/index";
+import { useRouter } from 'next/dist/client/router';
 
-export default function SmallCard({src,title,name,see,rate}) {
+export default function SmallCard({src,title,name,see,rate,id}) {
+  const router = useRouter();
   return (
-    <article>
+    <article onClick={()=>router.push(`/detail/${id}`)}>
       <img src={src} />
       <div>
         <h3>{title}</h3>

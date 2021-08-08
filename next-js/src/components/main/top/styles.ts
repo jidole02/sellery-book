@@ -96,6 +96,7 @@ export const TopBar = styled.div`
     box-sizing: content-box;
     position: relative;
     & article {
+      cursor: pointer;
       display: flex;
       gap: 27px;
       box-sizing: content-box;
