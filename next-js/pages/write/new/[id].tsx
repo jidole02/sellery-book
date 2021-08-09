@@ -59,7 +59,7 @@ export default function WriteContentPage() {
       const password = prompt("비밀번호를 입력해주세요.");
       if (!password) return alert("비밀번호가 틀렸습니다.");
       book
-        .publishBook(password, router.query.id)
+        .publishBook(password, router.query.id, content)
         .then((res) => {
           toast.success("축하합니다! 책이 출판되었습니다!");
           router.push("/");

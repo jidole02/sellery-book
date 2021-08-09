@@ -69,7 +69,7 @@ export default {
       },
     });
   },
-  publishBook(password, id) {
+  publishBook(password, id, contents) {
     return request({
       url: "/book/publish",
       method: "post",
@@ -79,6 +79,7 @@ export default {
       data: {
         password: password,
         id: id,
+        contents: contents,
       },
     });
   },
