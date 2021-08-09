@@ -3,7 +3,7 @@ import EyeIcon from "../../assets/eye";
 import StarIcon from "../../assets/star";
 
 interface props{
-    see : number;
+    see : number | string;
     rate : number;
     margin? : number;
 }

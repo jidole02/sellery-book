@@ -1,5 +1,6 @@
 import IconContainer from "./../../iconContainer/index";
 import { useRouter } from 'next/dist/client/router';
+import { numberToKorean } from './../../../utils/chageNum';
 
 export default function SmallCard({src,title,name,see,rate,id}) {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function SmallCard({src,title,name,see,rate,id}) {
         <h3>{title}</h3>
         <span>{name} 작가</span>
         <aside>로맨스</aside>
-        <IconContainer see={see} rate={rate} margin={19} />
+        <IconContainer see={numberToKorean(see)} rate={rate} margin={19} />
       </div>
     </article>
   );
