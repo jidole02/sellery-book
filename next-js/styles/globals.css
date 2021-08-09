@@ -50,3 +50,12 @@ button{
 img{
   object-fit:cover;
 }
+
+textarea{
+  resize: none;
+  outline: none;
+}
+
+textarea::-webkit-scrollbar{
+  display: none;
+}

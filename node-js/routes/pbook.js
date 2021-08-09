@@ -28,15 +28,16 @@ router.route("/get/:condition").get(async (req, res, next) => {
   }
 });
 
-router.route("/:id").get(async (req,res,next)=>{
-    try {
-      const id = req.params.id;
-      const book = await publishBook.findOne({ _id: id });
-      res.status(201).json(book);
-    } catch (error) {
-      console.log(error);
-      next(error);
-    }
-})
+router.route("/:id").get(async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const book = await publishBook.findOne({ _id: id });
+    await publishBook.updateOne({ _id: id }, { views: book.views + 1 });
+    res.status(201).json(book);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
 
 module.exports = router;

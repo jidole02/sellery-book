@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import book from "../../../src/api/book";
 import { toast } from "react-toastify";
+import { resizing } from "./../../../src/utils/resizing";
 
 export default function WriteContentPage() {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function WriteContentPage() {
         });
   }, [router.query.id]);
   useEffect(() => {
-    resizingById();
+    resizing("textarea");
   }, [content]);
   const putContent = (): void => {
     book
@@ -34,10 +35,6 @@ export default function WriteContentPage() {
         console.log(err);
         toast.error("저장에 실패하였습니다.");
       });
-  };
-  const resizingById = () => {
-    const textarea = document.getElementById("textarea");
-    textarea.style.height = textarea.scrollHeight.toString() + "px";
   };
   const handleData = (event) => {
     setContent(event.target.value);

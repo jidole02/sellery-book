@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import pbook from "../../src/api/pbook";
 import { DOMAIN } from "./../../src/api/export";
 import { getDate } from "./../../src/utils/date";
+import { resizing } from "./../../src/utils/resizing";
 
 export default function DetailPage() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function DetailPage() {
     id &&
       pbook.getBookDetail(id).then((res) => {
         setData(res.data);
+        resizing("writerComment");
       });
   }, [router]);
   return (
@@ -38,14 +40,19 @@ export default function DetailPage() {
                     margin={40}
                   />
                 </article>
-                <button>무료보기</button>
+                <button
+                  onClick={() => router.push(`/detail/read/${router.query.id}`)}
+                >
+                  무료보기
+                </button>
               </S.BookInfo>
             </>
-{/*             <S.Line margin={40} /> */}
             <>
               <S.IntroComment>
                 <h6>[내용소개]</h6>
-                <p>{data.intro}</p>
+                <textarea readOnly id="writerComment">
+                  {data.intro}
+                </textarea>
               </S.IntroComment>
             </>
             <>
@@ -53,7 +60,7 @@ export default function DetailPage() {
                 <>
                   <h4>{data.writerName} 작가의 말</h4>
                   <S.Line margin={20} />
-                  <p>{data.writerComment}</p>
+                  <textarea readOnly>{data.writerComment}</textarea>
                 </>
                 <>
                   <h4>전체 리뷰</h4>
