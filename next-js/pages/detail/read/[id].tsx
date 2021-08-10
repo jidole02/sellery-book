@@ -33,15 +33,20 @@ export default function ReadPage() {
         .append((i + 1).toString(), document.createElement("span"));
     }
   }
+  const sizing = () => {
+    resizing("readTextarea");
+    countLines(document.getElementById("readTextarea"));
+  };
   useEffect(() => {
     const id = router.query.id;
     id &&
-      pbook.getBookDetail(id,true).then((res) => {
+      pbook.getContents(id).then((res) => {
         setData(res.data);
-        resizing("readTextarea");
-        countLines(document.getElementById("readTextarea"));
       });
   }, [router]);
+  useEffect(() => {
+    document.getElementById("readTextarea") && sizing();
+  }, [data]);
   return (
     <S.Wrapper>
       <S.Container>

@@ -6,6 +6,7 @@ const fs = require("fs");
 const Book = require("../schemas/book");
 const { User } = require("../schemas/user");
 const publishBook = require("../schemas/publishBook");
+const content = require("../schemas/content");
 
 const router = express.Router();
 
@@ -159,7 +160,7 @@ router.route("/publish").post(checkToken, async (req, res, next) => {
                 message: "비밀번호가 틀렸습니다.",
               });
             } else {
-                console.log(isMatch)
+              console.log(isMatch);
               const book = await Book.findOne({ _id: req.body.id });
               const date = new Date();
               const pBook = await publishBook.create({
@@ -170,14 +171,21 @@ router.route("/publish").post(checkToken, async (req, res, next) => {
                 coverImg: book.coverImg,
                 intro: book.intro,
                 writerComment: book.writerComment,
-                contents : req.body.contents,
                 date: date,
               });
+              const contentObj = await content.create({
+                contents: req.body.contents,
+                bookId: pBook["_id"],
+                title : book.title
+              });
               await Book.deleteOne({ _id: req.body.id });
-              res.status(201).json(pBook);
+              res.status(201).json({pBook,contentObj});
             }
           })
-          .catch((err) => res.status(400).send(err));
+          .catch((err) => {
+            console.log(err)
+            next(err)
+          });
       }
     });
   } catch (error) {

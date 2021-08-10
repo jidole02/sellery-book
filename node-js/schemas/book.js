@@ -34,10 +34,6 @@ const bookSchema = new Schema({
     type: String,
     required: true,
   },
-  contents: {
-    type: String,
-    default : ""
-  },
 });
 
 module.exports = mongoose.model("Book", bookSchema);

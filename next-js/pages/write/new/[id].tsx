@@ -55,6 +55,10 @@ export default function WriteContentPage() {
     }
   };
   const publishBook = () => {
+    if (!content) {
+      toast.info("책 내용이 비어있습니다.");
+      return;
+    }
     if (confirm("정말로 출판하시겠습니까? (출판 후 수정은 불가합니다.)")) {
       const password = prompt("비밀번호를 입력해주세요.");
       if (!password) return alert("비밀번호가 틀렸습니다.");

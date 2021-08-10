@@ -32,9 +32,9 @@ export const ReadArea = styled.div`
     font-family:Arial, Helvetica, sans-serif;
   }
   & textarea {
+    width:calc(100% - 50px);
     font-size:18px;
     padding: 33px 40px;
-    width: calc(100%);
     margin-left:10px;
     border: none;
     color: black;

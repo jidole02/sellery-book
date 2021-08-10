@@ -26,7 +26,7 @@ export default function DetailPage() {
   useEffect(() => {
     const id = router.query.id;
     id &&
-      pbook.getBookDetail(id, false).then((res) => {
+      pbook.getBookDetail(id).then((res) => {
         setData(res.data);
         resizing("writerComment");
       });

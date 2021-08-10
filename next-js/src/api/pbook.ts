@@ -14,9 +14,9 @@ export default {
       method: "get",
     });
   },
-  getBookDetail(id, detail: boolean) {
+  getBookDetail(id) {
     return request({
-      url: `/pbook?id=${id}&detail=${detail}`,
+      url: `/pbook?id=${id}`,
       method: "get",
     });
   },
@@ -36,6 +36,12 @@ export default {
   getComment(bookid) {
     return request({
       url: `/comment/${bookid}`,
+      method: "get",
+    });
+  },
+  getContents(bookid) {
+    return request({
+      url: `/pbook/contents/${bookid}`,
       method: "get",
     });
   },
