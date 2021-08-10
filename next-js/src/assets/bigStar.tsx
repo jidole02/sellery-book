@@ -1,10 +1,11 @@
 import { COLOR } from "./../../styles/index";
 interface props {
   check: boolean;
-  callback(): void;
+  callback?(): void;
+  size: number;
 }
 
-export default function BigStarIcon({ check, callback }: props) {
+export default function BigStarIcon({ check, callback, size }: props) {
   return (
     <>
       {check ? (
@@ -13,8 +14,8 @@ export default function BigStarIcon({ check, callback }: props) {
           style={{ cursor: "pointer" }}
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          width="54.464"
-          height="51.741"
+          width={size}
+          height={size}
           viewBox="0 0 54.464 51.741"
         >
           <defs>
@@ -42,8 +43,8 @@ export default function BigStarIcon({ check, callback }: props) {
           onClick={callback}
           style={{ cursor: "pointer" }}
           xmlns="http://www.w3.org/2000/svg"
-          width="55.721"
-          height="51.741"
+          width={size}
+          height={size}
           viewBox="0 0 55.721 51.741"
         >
           <path

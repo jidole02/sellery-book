@@ -1,4 +1,5 @@
 import request from "./axios";
+import { TOKEN } from "./export";
 
 export default {
   getNewBook() {
@@ -13,9 +14,28 @@ export default {
       method: "get",
     });
   },
-  getBookDetail(id,detail : boolean) {
+  getBookDetail(id, detail: boolean) {
     return request({
       url: `/pbook?id=${id}&detail=${detail}`,
+      method: "get",
+    });
+  },
+  writeComment(bookid, rate, comment) {
+    return request({
+      url: `/comment/${bookid}`,
+      method: "post",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
+      },
+      data: {
+        rate: rate,
+        contents: comment,
+      },
+    });
+  },
+  getComment(bookid) {
+    return request({
+      url: `/comment/${bookid}`,
       method: "get",
     });
   },

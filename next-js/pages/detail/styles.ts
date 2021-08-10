@@ -8,6 +8,7 @@ export const Wrapper = styled(WRAPPER)`
 export const Container = styled(CONTAIENR)`
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 `;
 
 export const BookInfo = styled.section`
@@ -108,8 +109,9 @@ export const BottomContainer = styled.div`
     background: none;
     border: none;
     margin-top: 30px;
-    font-size:16px;
-    color:black;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 50px;
   }
 `;
 
@@ -139,11 +141,51 @@ export const ReviewWrapper = styled.div`
     font-size: 17px;
     margin-top: 60px;
     resize: none;
-    margin-bottom: 100px;
     &::placeholder {
       color: ${COLOR.text};
     }
   }
+`;
+
+export const CommentWrapper = styled.div`
+  width: 100%;
+  margin-top: 30px;
+  border-top: 1px solid ${COLOR.border};
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CommentInfo = styled.section`
+  display: flex;
+  flex-direction: column;
+  & div {
+    display: flex;
+    gap: 5px;
+  }
+  & article {
+    margin-top: 16px;
+    max-width: 150px;
+    & span {
+      font-size: 17px;
+      color: black;
+    }
+    & time {
+      font-size: 14px;
+      margin-left: 12px;
+      color: ${COLOR.text};
+    }
+  }
+`;
+
+export const CommentContents = styled.div`
+  font-size: 17px;
+  color: black;
+  width: 900px;
+  max-width: 900px;
+  margin: 0;
+  word-break: break-all;
+  margin-top: 10px;
 `;
 
 export const StarWrapper = styled.div`

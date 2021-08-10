@@ -19,6 +19,7 @@ app.use("/img", express.static(path.join(__dirname, "uploads")));
 app.use("/user", require("./routes/user"));
 app.use("/book", require("./routes/book"));
 app.use("/pbook", require("./routes/pbook"));
+app.use("/comment", require("./routes/comment"));
 
 app.use((req, res, next) => {
   const err = new Error(`${req.method} ${req.url} router is not find`);

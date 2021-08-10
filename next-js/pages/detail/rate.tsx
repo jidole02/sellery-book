@@ -10,6 +10,7 @@ export default function Rate({ callback, rate }) {
           key={index}
           check={e <= rate ? true : false}
           callback={() => callback(e)}
+          size={53}
         />
       ))} 
     </S.StarWrapper>
