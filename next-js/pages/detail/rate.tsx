@@ -1,14 +1,17 @@
 import BigStarIcon from "../../src/assets/bigStar";
 import * as S from "./styles";
 
-export default function Rate() {
+export default function Rate({ callback, rate }) {
+  const arr = [1, 2, 3, 4, 5];
   return (
     <S.StarWrapper>
-      <BigStarIcon check={true} callback={()=>{}} />
-      <BigStarIcon check={true} callback={()=>{}} />
-      <BigStarIcon check={true} callback={()=>{}} />
-      <BigStarIcon check={true} callback={()=>{}} />
-      <BigStarIcon check={true} callback={()=>{}} />
+      {arr.map((e, index) => (
+        <BigStarIcon
+          key={index}
+          check={e <= rate ? true : false}
+          callback={() => callback(e)}
+        />
+      ))} 
     </S.StarWrapper>
   );
 }

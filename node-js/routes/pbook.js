@@ -28,11 +28,16 @@ router.route("/get/:condition").get(async (req, res, next) => {
   }
 });
 
-router.route("/:id").get(async (req, res, next) => {
+router.route("/").get(async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.query.id;
+    const detail = req.query.detail;
+    console.log(detail);
     const book = await publishBook.findOne({ _id: id });
-    await publishBook.updateOne({ _id: id }, { views: book.views + 1 });
+    await publishBook.updateOne(
+      { _id: id },
+      { views: detail === "true" ? book.views + 1 : book.views }
+    );
     res.status(201).json(book);
   } catch (error) {
     console.log(error);

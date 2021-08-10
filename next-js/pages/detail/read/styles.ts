@@ -34,7 +34,8 @@ export const ReadArea = styled.div`
   & textarea {
     font-size:18px;
     padding: 33px 40px;
-    width: calc(100% - 30px);
+    width: calc(100%);
+    margin-left:10px;
     border: none;
     color: black;
     box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.2);

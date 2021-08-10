@@ -13,9 +13,9 @@ export default {
       method: "get",
     });
   },
-  getBookDetail(id) {
+  getBookDetail(id,detail : boolean) {
     return request({
-      url: `/pbook/${id}`,
+      url: `/pbook?id=${id}&detail=${detail}`,
       method: "get",
     });
   },

@@ -36,7 +36,7 @@ export default function ReadPage() {
   useEffect(() => {
     const id = router.query.id;
     id &&
-      pbook.getBookDetail(id).then((res) => {
+      pbook.getBookDetail(id,true).then((res) => {
         setData(res.data);
         resizing("readTextarea");
         countLines(document.getElementById("readTextarea"));
