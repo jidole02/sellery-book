@@ -19,5 +19,5 @@ export const numberToKorean=(number):number | string=>{
         resultString = String(resultArray[i]) + unitWords[i] + resultString;
     }
 
-    return resultString;
+    return resultString || 0;
 }
