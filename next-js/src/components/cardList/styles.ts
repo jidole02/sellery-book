@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top:30px;
+  margin-top: 30px;
 `;
 
 export const Title = styled.div`
@@ -17,7 +17,9 @@ export const Title = styled.div`
 
 export const List = styled.div`
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 180px);
   justify-content: space-between;
   margin-top: 25px;
+  grid-row-gap: 40px;
 `;
