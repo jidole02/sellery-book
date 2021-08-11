@@ -19,9 +19,35 @@ router.route("/new").get(async (req, res, next) => {
 router.route("/get/:condition").get(async (req, res, next) => {
   try {
     const condition = req.params.condition;
+    console.log(condition)
     if (condition === "new") {
       const books = await publishBook.find().sort({ date: -1 }).limit(5);
-      res.status(201).json(books);
+      return res.status(201).json(books);
+    }
+    if (condition === "mostview") {
+      const books = await publishBook.find().sort({ views: -1 }).limit(5);
+      return res.status(201).json(books);
+    }
+    if (condition === "mostrate") {
+      const books = await publishBook.find().sort({ rate: -1 }).limit(5);
+      return res.status(201).json(books);
+    }
+    if (condition === "sub") {
+      publishBook.count().exec(function (err, count) {
+        var random = Math.floor(Math.random() * (count - 1));
+        publishBook
+          .find()
+          .skip(random)
+          .limit(2)
+          .exec(function (err, result) {
+            return res.status(201).json(result);
+          });
+      });
+    }
+    if (condition === "genre") {
+      const genre = req.query.genre;
+      const books = await publishBook.find({ genre: genre }).limit(5);
+      return res.status(201).json(books);
     }
   } catch (error) {
     console.log(error);

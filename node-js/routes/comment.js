@@ -11,6 +11,9 @@ router
   .route("/:id")
   .post(checkToken, async (req, res, next) => {
     try {
+      if (req.body.rate < 1 || req.body.rate > 5) {
+        return res.status(400);
+      }
       const publishBookObj = await publishBook.findOne({ _id: req.params.id });
       if (publishBookObj.rate == 0) {
         await publishBook.updateOne(

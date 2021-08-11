@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 interface props {
   title: string;
-  condition: "new";
+  condition: string;
 }
 
 export default function CardList({ title, condition }: props) {

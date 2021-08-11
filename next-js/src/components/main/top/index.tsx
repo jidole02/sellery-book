@@ -4,14 +4,18 @@ import useInterval from "../../../utils/useInterval";
 import pbook from "../../../api/pbook";
 import { DOMAIN } from "./../../../api/export";
 import SmallCard from "./smallCard";
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from "next/dist/client/router";
 
 export default function Top() {
   const [data, setData] = useState<any[]>([]);
+  const [subData, setSubData] = useState<any[]>([]);
   const router = useRouter();
   useEffect(() => {
     pbook.getNewBook().then((res) => {
       setData(res.data);
+    });
+    pbook.getPBook("sub").then((res) => {
+      setSubData(res.data);
     });
   }, []);
   const ment = [
@@ -54,7 +58,11 @@ export default function Top() {
                     <span>
                       <mark>{obj.writerName}</mark>작가 신작
                     </span>
-                    <button onClick={()=>router.push(`/detail/${obj["_id"]}`)}>바로가기</button>
+                    <button
+                      onClick={() => router.push(`/detail/${obj["_id"]}`)}
+                    >
+                      바로가기
+                    </button>
                   </S.Infor>
                   <S.ConverImg src={DOMAIN + obj.coverImg} />
                 </S.Card>
@@ -66,19 +74,18 @@ export default function Top() {
       <>
         <section>
           {data.length > 0 &&
-            data
-              .slice(0, 2)
-              .map((obj, index) => (
-                <SmallCard
-                  key={index}
-                  id={obj["_id"]}
-                  title={obj.title}
-                  src={DOMAIN + obj.coverImg}
-                  name={obj.writerName}
-                  see={obj.views}
-                  rate={obj.rate}
-                />
-              ))}
+            subData.map((obj, index) => (
+              <SmallCard
+                key={index}
+                id={obj["_id"]}
+                title={obj.title}
+                src={DOMAIN + obj.coverImg}
+                name={obj.writerName}
+                see={obj.views}
+                rate={obj.rate}
+                genre={obj.genre}
+              />
+            ))}
         </section>
       </>
     </S.TopBar>
