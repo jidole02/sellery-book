@@ -11,6 +11,20 @@ router
   .route("/:id")
   .post(checkToken, async (req, res, next) => {
     try {
+      const publishBookObj = await publishBook.findOne({ _id: req.params.id });
+      if (publishBookObj.rate == 0) {
+        await publishBook.updateOne(
+          { _id: req.params.id },
+          { rate: req.body.rate }
+        );
+      } else {
+        await publishBook.updateOne(
+          { _id: req.params.id },
+          {
+            rate: ((publishBookObj.rate + req.body.rate) / 2).toFixed(1),
+          }
+        );
+      }
       const user = await User.findOne({ token: req.token });
       const user_id = user["_id"];
       const user_name = user.nickname;

@@ -40,7 +40,7 @@ const bookSchema = new Schema({
   },
   rate: {
     type: Number,
-    default: 0.0,
+    default: 0,
   },
 });
 
