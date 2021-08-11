@@ -14,6 +14,7 @@ export default function ManiPage() {
         <S.Slide src="/slide1.PNG" alt="" />
         <CardList title="나를 위한 자기계발 도서" condition={`genre?genre=자기계발`} />
         <CardList title="세상을 바라보는 경제경영 도서" condition={`genre?genre=경제경영`} />
+        <CardList title="상상에 상상을 더하다, SF판타지" condition={`genre?genre=SF판타지`} />
       </S.Container>
     </S.Wrapper>
   );

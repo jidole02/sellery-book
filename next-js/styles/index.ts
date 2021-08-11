@@ -16,5 +16,5 @@ export const WRAPPER = styled.div`
 `;
 
 export const CONTAIENR = styled.div`
-  width: 1120px;
+  width: 1100px;
 `;

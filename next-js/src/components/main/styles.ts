@@ -14,5 +14,5 @@ export const Container = styled(CONTAIENR)`
 export const Slide = styled.img`
 width:100%;
 border-radius:5px;
-margin:50px 0;
+margin:30px 0;
 `
