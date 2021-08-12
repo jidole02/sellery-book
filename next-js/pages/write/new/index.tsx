@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { GenreArr } from "../../../src/utils/export";
 import Description from "./description";
-import * as S from "./styles";
+import * as S from "../../../pagestyle/writenewstyles";
 import Tip from "./tip";
 import book from "../../../src/api/book";
 import { DOMAIN } from "./../../../src/api/export";

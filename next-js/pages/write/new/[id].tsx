@@ -1,4 +1,4 @@
-import * as S from "./styles";
+import * as S from "../../../pagestyle/writenewstyles";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import book from "../../../src/api/book";

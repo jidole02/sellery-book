@@ -1,4 +1,4 @@
-import * as S from "../styles";
+import * as S from "../../../pagestyle/authstyles";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import auth from "../../../src/api/auth";

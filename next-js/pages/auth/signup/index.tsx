@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as S from "../styles";
+import * as S from "../../../pagestyle/authstyles";
 import auth from "../../../src/api/auth";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";

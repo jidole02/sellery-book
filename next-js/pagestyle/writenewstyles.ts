@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { CONTAIENR, WRAPPER } from "../../../styles";
-import { COLOR } from "./../../../styles/index";
+import { CONTAIENR, WRAPPER } from "../styles";
+import { COLOR } from "../styles/index";
 
 export const Wrapper = styled(WRAPPER)`
   padding-top: 35px;

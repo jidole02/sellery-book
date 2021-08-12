@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as S from "./styles";
+import * as S from "../../pagestyle/writestyles";
 import book from "../../src/api/book";
 import None from "./none";
 import BookCard from "./bookCard";

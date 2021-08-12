@@ -1,5 +1,5 @@
 import BigStarIcon from "../../src/assets/bigStar";
-import * as S from "./styles";
+import * as S from "../../pagestyle/detailstyles";
 
 export default function Rate({ callback, rate }) {
   const arr = [1, 2, 3, 4, 5];
