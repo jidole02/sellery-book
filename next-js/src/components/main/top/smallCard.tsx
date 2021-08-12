@@ -1,5 +1,5 @@
 import IconContainer from "./../../iconContainer/index";
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { numberToKorean } from './../../../utils/chageNum';
 
 export default function SmallCard({src,title,name,see,rate,id,genre}) {

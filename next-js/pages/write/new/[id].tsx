@@ -1,5 +1,5 @@
 import * as S from "../../../pagestyle/writenewstyles";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import book from "../../../src/api/book";
 import { toast } from "react-toastify";

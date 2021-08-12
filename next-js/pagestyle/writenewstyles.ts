@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { CONTAIENR, WRAPPER } from "../styles";
-import { COLOR } from "../styles/index";
+import { CONTAIENR, WRAPPER, COLOR } from "../styles";
 
 export const Wrapper = styled(WRAPPER)`
   padding-top: 35px;
@@ -137,7 +136,7 @@ export const WriteWrapper = styled.div`
 export const ContentWrapper = styled(WRAPPER)`
   padding-top: 47px;
   height: auto;
-  min-height:100vh;
+  min-height: 100vh;
   background: ${COLOR.background};
 `;
 
@@ -157,7 +156,7 @@ export const ContentContaienr = styled(CONTAIENR)`
     outline: none;
     margin-top: 40px;
     height: auto;
-    line-height:25px;
+    line-height: 25px;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -168,29 +167,29 @@ export const ContentContaienr = styled(CONTAIENR)`
 `;
 
 export const ContentBottom = styled.div`
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:50px;
-margin-bottom:100px;
-& aside{
-    color:${COLOR.text};
-    font-size:15px;
-}
-& div{
-    display:flex;
-    gap:13px;
-}
-& button{
-    padding:10px 30px;
-    font-size:16px;
-    color:${COLOR.main};
-    border:1px solid ${COLOR.main};
-    background:none;
-    border-radius:3px;
-    &:last-of-type{
-        background:${COLOR.main};
-        color:white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  & aside {
+    color: ${COLOR.text};
+    font-size: 15px;
+  }
+  & div {
+    display: flex;
+    gap: 13px;
+  }
+  & button {
+    padding: 10px 30px;
+    font-size: 16px;
+    color: ${COLOR.main};
+    border: 1px solid ${COLOR.main};
+    background: none;
+    border-radius: 3px;
+    &:last-of-type {
+      background: ${COLOR.main};
+      color: white;
     }
-}
-`
+  }
+`;

@@ -1,5 +1,5 @@
 import * as S from "../../../pagestyle/authstyles";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import auth from "../../../src/api/auth";
 import { toast } from "react-toastify";

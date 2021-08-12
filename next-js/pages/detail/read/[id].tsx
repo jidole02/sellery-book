@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as S from "../../../pagestyle/readstyles";
 import { resizing } from "./../../../src/utils/resizing";
 import pbook from "../../../src/api/pbook";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 
 export default function ReadPage() {
   const router = useRouter();

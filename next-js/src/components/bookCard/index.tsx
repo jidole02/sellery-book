@@ -1,7 +1,7 @@
 import IconContainer from "../iconContainer";
 import * as S from "./styles";
 import { DOMAIN } from "./../../api/export";
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { numberToKorean } from './../../utils/chageNum';
 
 export default function BookCard({ title, src, see, rate, name,genre,id }) {

@@ -4,7 +4,7 @@ import useInterval from "../../../utils/useInterval";
 import pbook from "../../../api/pbook";
 import { DOMAIN } from "./../../../api/export";
 import SmallCard from "./smallCard";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 
 export default function Top() {
   const [data, setData] = useState<any[]>([]);

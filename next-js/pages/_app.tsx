@@ -2,9 +2,9 @@ import Head from "next/head";
 import Header from "../src/components/header";
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import auth from "../src/api/auth";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {

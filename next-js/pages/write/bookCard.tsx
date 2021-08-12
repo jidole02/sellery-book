@@ -1,7 +1,7 @@
 import { getDate } from "../../src/utils/date";
 import * as S from "../../pagestyle/writestyles";
 import { DOMAIN } from "./../../src/api/export";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 
 interface props {
   title: string;

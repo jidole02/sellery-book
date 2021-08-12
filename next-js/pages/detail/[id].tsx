@@ -1,7 +1,7 @@
 import IconContainer from "../../src/components/iconContainer";
 import Rate from "./rate";
 import * as S from "../../pagestyle/detailstyles";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import pbook from "../../src/api/pbook";
 import { DOMAIN } from "./../../src/api/export";
