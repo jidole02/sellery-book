@@ -7,12 +7,8 @@ export const Wrapper = styled.div`
   margin-top: 30px;
 `;
 
-interface props {
-  border: boolean;
-}
-
-export const Title = styled.div<props>`
-  border-top: ${(props) => (props.border ? "1px solid #dcdcdc" : "none")};
+export const Title = styled.div`
+  border-top: 1px solid #dcdcdc;
   padding-top: 20px;
   font-size: 20px;
   font-weight: bold;

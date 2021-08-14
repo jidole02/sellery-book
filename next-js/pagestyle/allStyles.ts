@@ -14,9 +14,6 @@ export const Menu = styled.div`
   justify-content: center;
   gap: 15px 40px;
   flex-wrap: wrap;
-  &:last-of-type {
-    margin-top: 30px;
-  }
 `;
 
 interface labelProps {

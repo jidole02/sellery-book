@@ -4,12 +4,11 @@ import pbook from "../../api/pbook";
 import { useEffect, useState } from "react";
 
 interface props {
-  title: string;
+  title: string | null;
   condition: string;
-  border?:boolean;
 }
 
-export default function CardList({ title, condition,border = true }: props) {
+export default function CardList({ title, condition }: props) {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     pbook.getPBook(condition).then((res) => {
@@ -18,7 +17,7 @@ export default function CardList({ title, condition,border = true }: props) {
   }, []);
   return (
     <S.Wrapper>
-      <S.Title border={border}>{title}</S.Title>
+      <S.Title>{title}</S.Title>
       <S.List>
         {data.map((obj, index) => (
           <BookCard

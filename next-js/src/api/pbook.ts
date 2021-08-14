@@ -45,4 +45,10 @@ export default {
       method: "get",
     });
   },
+  getAllPBook(page, genre, sort) {
+    return request({
+      url: `/pbook/getall?page=${page}&genre=${genre}&sort=${sort}`,
+      method: "get",
+    });
+  },
 };
