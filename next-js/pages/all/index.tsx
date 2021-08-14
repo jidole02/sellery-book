@@ -5,6 +5,7 @@ import pbook from "../../src/api/pbook";
 import BookCard from "../../src/components/bookCard";
 import PageArrowIcon from "../../src/assets/pageArrow";
 import { useRouter } from "next/router";
+import { COLOR } from "./../../styles/index";
 
 export default function AllPage() {
   const router = useRouter();
@@ -18,14 +19,20 @@ export default function AllPage() {
   const [page, setPage] = useState<string[] | string>("");
   const [data, setData] = useState<any[]>([]);
   const perPage = 5;
+  const routing = (genre, sort): void => {
+    router.push(`all?page=1&genre=${genre}&sort=${sort}`);
+  };
   const getGenreValue = ({ target }): void => {
     setGenre(target.value);
+    routing(target.value, sort);
   };
   const getSortValue = ({ target }): void => {
     setSort(target.value);
+    routing(genre, target.value);
   };
   const changePage = (event): any => {
     setPage(event.target.innerHTML);
+    routing(genre, sort);
   };
   useEffect(() => {
     setPage(query.page);
@@ -40,18 +47,22 @@ export default function AllPage() {
         while (pageContainer.firstChild) {
           pageContainer.removeChild(pageContainer.firstChild);
         }
-        const first = (parseInt(page.toString()) / perPage) * perPage;
+        const first =
+          Math.floor(parseInt(page.toString()) / perPage) * perPage + 1;
         const max =
-          res.data.last > first + perPage ? first + perPage : res.data.last;
+          res.data.last >= first + perPage
+            ? first + perPage - 1
+            : res.data.last;
         for (let i = first; i <= max; i++) {
           const span = document.createElement("span");
           span.innerHTML = i.toString();
+          span.innerHTML === page ? (span.style.color = COLOR.main) : {};
           span.onclick = changePage;
           pageContainer.insertBefore(span, null);
         }
         setData(res.data.data);
       });
-  }, [genre, sort, router]);
+  }, [genre, sort, page]);
   return (
     <S.Wrapper>
       <S.Container>
@@ -126,7 +137,7 @@ export default function AllPage() {
         <>
           <S.PageWrapper>
             <PageArrowIcon callback={() => {}} deg="0" />
-            <div id="pageContainer"/>
+            <div id="pageContainer" />
             <PageArrowIcon callback={() => {}} deg="180" />
           </S.PageWrapper>
         </>
