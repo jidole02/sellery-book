@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 interface props {
   title: string;
   condition: string;
+  border?:boolean;
 }
 
-export default function CardList({ title, condition }: props) {
+export default function CardList({ title, condition,border = true }: props) {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     pbook.getPBook(condition).then((res) => {
@@ -17,7 +18,7 @@ export default function CardList({ title, condition }: props) {
   }, []);
   return (
     <S.Wrapper>
-      <S.Title>{title}</S.Title>
+      <S.Title border={border}>{title}</S.Title>
       <S.List>
         {data.map((obj, index) => (
           <BookCard
