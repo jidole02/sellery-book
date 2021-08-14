@@ -65,18 +65,20 @@ export const PageWrapper = styled.div`
   width: 100%;
   margin-top: 100px;
   display: flex;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   & div {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
+    padding:5px;
     & span {
       color: black;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
+      padding:10px;
     }
   }
 `;
