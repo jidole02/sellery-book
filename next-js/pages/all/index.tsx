@@ -19,7 +19,7 @@ export default function AllPage() {
   const [page, setPage] = useState<string>("");
   const [data, setData] = useState<any[]>([]);
   const [lastPage, setLastPage] = useState<number>();
-  const perPage = 5;
+  const perPage = 10;
   const routing = (page, genre, sort): void => {
     router.push(`all?page=${page}&genre=${genre}&sort=${sort}`);
   };

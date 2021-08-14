@@ -58,7 +58,7 @@ router.route("/get/:condition").get(async (req, res, next) => {
 router.route("/getall").get(async (req, res, next) => {
   // /get/all?page=1&genre=SF판타지&sort=최신순
   const { page, genre, sort } = req.query;
-  const max = 5;
+  const max = 10;
   try {
     const genreObj = genre === "전체" ? {} : { genre: genre };
     const count = await publishBook.countDocuments(genreObj);
@@ -67,7 +67,7 @@ router.route("/getall").get(async (req, res, next) => {
     if (genre === "전체" && sort === "전체") {
       result = await publishBook
         .find()
-        .skip((page - 1) * 5)
+        .skip((page - 1) * max)
         .limit(max);
     } else {
       if (sort === "전체") {

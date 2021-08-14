@@ -11,7 +11,7 @@ export const Container = styled(CONTAIENR)`
 export const Menu = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+/*   justify-content: center; */
   gap: 15px 40px;
   flex-wrap: wrap;
 `;
@@ -34,7 +34,7 @@ export const GenreLabel = styled.label<labelProps>`
 export const SortLabel = styled.label<labelProps>`
   cursor: pointer;
   cursor: pointer;
-  justify-content: center;
+/*   justify-content: center; */
   font-size: 16px;
   display: flex;
   align-items: center;
