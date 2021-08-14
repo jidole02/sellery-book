@@ -15,8 +15,7 @@ export default function AllPage() {
   genreArr.unshift("전체");
   const [genre, setGenre] = useState<string[] | string>("");
   const [sort, setSort] = useState<string[] | string>("");
-  const [pageArr, setpageArr] = useState<number[]>([]);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<string[] | string>("");
   const [data, setData] = useState<any[]>([]);
   const perPage = 5;
   const getGenreValue = ({ target }): void => {
@@ -25,7 +24,11 @@ export default function AllPage() {
   const getSortValue = ({ target }): void => {
     setSort(target.value);
   };
+  const changePage = (event): any => {
+    setPage(event.target.innerHTML);
+  };
   useEffect(() => {
+    setPage(query.page);
     setGenre(query.genre);
     setSort(query.sort);
   }, [router]);
@@ -33,6 +36,19 @@ export default function AllPage() {
     genre &&
       sort &&
       pbook.getAllPBook(page, genre, sort).then((res) => {
+        const pageContainer = document.getElementById("pageContainer");
+        while (pageContainer.firstChild) {
+          pageContainer.removeChild(pageContainer.firstChild);
+        }
+        const first = (parseInt(page.toString()) / perPage) * perPage;
+        const max =
+          res.data.last > first + perPage ? first + perPage : res.data.last;
+        for (let i = first; i <= max; i++) {
+          const span = document.createElement("span");
+          span.innerHTML = i.toString();
+          span.onclick = changePage;
+          pageContainer.insertBefore(span, null);
+        }
         setData(res.data.data);
       });
   }, [genre, sort, router]);
@@ -110,9 +126,7 @@ export default function AllPage() {
         <>
           <S.PageWrapper>
             <PageArrowIcon callback={() => {}} deg="0" />
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
+            <div id="pageContainer"/>
             <PageArrowIcon callback={() => {}} deg="180" />
           </S.PageWrapper>
         </>
