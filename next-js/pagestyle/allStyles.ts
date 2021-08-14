@@ -60,3 +60,17 @@ export const CardList = styled.div`
   grid-row-gap: 30px;
   margin-top:50px;
 `;
+
+export const PageWrapper = styled.div`
+width:100%;
+margin-top:100px;
+display:flex;
+gap:20px;
+align-items:center;
+justify-content:center;
+& span{
+    color:black;
+    font-size:17px;
+    font-weight:bold;
+}
+`

@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   & img {
     width: 100%;
     height: ${`${CARD_SIZE*1.5}px`};
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.1);
   }
   & h3 {
     margin-top: 20px;

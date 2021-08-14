@@ -94,7 +94,7 @@ export default function Header() {
             <div style={{ gap: "50px", height: "100%" }}>
               <NavLink content="메인페이지" href="/" />
               <NavLink content="베스트셀러" href="/best" />
-              <NavLink content="전체보기" href="/all" />
+              <NavLink content="전체보기" href="/all?page=1&genre=전체&sort=전체" />
               <NavLink content="책 집필하기" href="/write" />
             </div>
           </>

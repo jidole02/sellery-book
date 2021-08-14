@@ -3,16 +3,22 @@ import { GenreArr } from "./../../src/utils/export";
 import { useEffect, useState } from "react";
 import pbook from "../../src/api/pbook";
 import BookCard from "../../src/components/bookCard";
+import PageArrowIcon from "../../src/assets/pageArrow";
+import { useRouter } from "next/router";
 
 export default function AllPage() {
+  const router = useRouter();
+  const query = router.query;
   const genreArr = GenreArr.slice();
   const sortArr = ["전체", "최신순", "과거순", "평점순", "조회순"];
+
   genreArr.unshift("전체");
-  const [genre, setGenre] = useState<string>(genreArr[0]);
-  const [sort, setSort] = useState<string>(sortArr[0]);
-  const [lastPage, setLastPage] = useState<number>(1);
+  const [genre, setGenre] = useState<string[] | string>("");
+  const [sort, setSort] = useState<string[] | string>("");
+  const [pageArr, setpageArr] = useState<number[]>([]);
   const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<any[]>([]);
+  const perPage = 5;
   const getGenreValue = ({ target }): void => {
     setGenre(target.value);
   };
@@ -20,11 +26,16 @@ export default function AllPage() {
     setSort(target.value);
   };
   useEffect(() => {
-    pbook.getAllPBook(page, genre, sort).then((res) => {
-      setLastPage(res.data.last);
-      setData(res.data.data);
-    });
-  }, [genre, sort]);
+    setGenre(query.genre);
+    setSort(query.sort);
+  }, [router]);
+  useEffect(() => {
+    genre &&
+      sort &&
+      pbook.getAllPBook(page, genre, sort).then((res) => {
+        setData(res.data.data);
+      });
+  }, [genre, sort, router]);
   return (
     <S.Wrapper>
       <S.Container>
@@ -95,6 +106,15 @@ export default function AllPage() {
               />
             ))}
           </S.CardList>
+        </>
+        <>
+          <S.PageWrapper>
+            <PageArrowIcon callback={() => {}} deg="0" />
+            <span>1</span>
+            <span>1</span>
+            <span>1</span>
+            <PageArrowIcon callback={() => {}} deg="180" />
+          </S.PageWrapper>
         </>
       </S.Container>
     </S.Wrapper>
