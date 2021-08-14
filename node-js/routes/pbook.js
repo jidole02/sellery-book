@@ -99,7 +99,7 @@ router.route("/getall").get(async (req, res, next) => {
           .find(genreObj)
           .skip((page - 1) * 5)
           .limit(max)
-          .sort({ views: 1 });
+          .sort({ date: 1 });
       }
     }
     return res.status(201).json({

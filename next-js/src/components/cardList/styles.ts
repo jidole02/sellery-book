@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { CARD_SIZE } from "../../../styles";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -18,8 +19,14 @@ export const Title = styled.div`
 export const List = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 180px);
+  grid-template-columns: ${`repeat(5,${CARD_SIZE}px)`};
   justify-content: space-between;
   margin-top: 25px;
   grid-row-gap: 40px;
+`;
+
+export const CardWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  justify-content: space-between;
 `;

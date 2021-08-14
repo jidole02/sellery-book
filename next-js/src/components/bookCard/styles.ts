@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR } from "../../../styles";
+import { CARD_SIZE, COLOR } from "../../../styles";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   cursor: pointer;
   & img {
     width: 100%;
-    height: 270px;
+    height: ${`${CARD_SIZE*1.5}px`};
     box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.2);
   }
   & h3 {

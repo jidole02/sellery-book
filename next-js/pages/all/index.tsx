@@ -2,6 +2,7 @@ import * as S from "../../pagestyle/allStyles";
 import { GenreArr } from "./../../src/utils/export";
 import { useEffect, useState } from "react";
 import pbook from "../../src/api/pbook";
+import BookCard from "../../src/components/bookCard";
 
 export default function AllPage() {
   const genreArr = GenreArr.slice();
@@ -9,6 +10,9 @@ export default function AllPage() {
   genreArr.unshift("전체");
   const [genre, setGenre] = useState<string>(genreArr[0]);
   const [sort, setSort] = useState<string>(sortArr[0]);
+  const [lastPage, setLastPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(1);
+  const [data, setData] = useState<any[]>([]);
   const getGenreValue = ({ target }): void => {
     setGenre(target.value);
   };
@@ -16,8 +20,9 @@ export default function AllPage() {
     setSort(target.value);
   };
   useEffect(() => {
-    pbook.getAllPBook(1, genre, sort).then((res) => {
-      console.log(res.data);
+    pbook.getAllPBook(page, genre, sort).then((res) => {
+      setLastPage(res.data.last);
+      setData(res.data.data);
     });
   }, [genre, sort]);
   return (
@@ -75,7 +80,22 @@ export default function AllPage() {
             </S.Menu>
           </>
         </>
-        <></>
+        <>
+          <S.CardList>
+            {data.map((obj, index) => (
+              <BookCard
+                key={index}
+                title={obj.title}
+                src={obj.coverImg}
+                see={obj.views}
+                rate={obj.rate}
+                name={obj.writerName}
+                genre={obj.genre}
+                id={obj["_id"]}
+              />
+            ))}
+          </S.CardList>
+        </>
       </S.Container>
     </S.Wrapper>
   );

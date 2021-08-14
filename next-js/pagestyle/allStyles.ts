@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, CONTAIENR, WRAPPER } from "../styles";
+import { CARD_SIZE, COLOR, CONTAIENR, WRAPPER } from "../styles";
 
 export const Wrapper = styled(WRAPPER)``;
 
@@ -36,8 +36,8 @@ export const SortLabel = styled.label<labelProps>`
   cursor: pointer;
   justify-content: center;
   font-size: 16px;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   color: ${(res) => (res.check ? COLOR.main : COLOR.text)};
   & input[type="radio"] {
     margin: 0;
@@ -46,8 +46,17 @@ export const SortLabel = styled.label<labelProps>`
   & div {
     width: 6px;
     height: 6px;
-    border-radius:80%;
-    margin-right:10px;
+    border-radius: 80%;
+    margin-right: 10px;
     background-color: ${(res) => (res.check ? COLOR.main : COLOR.text)};
   }
+`;
+
+export const CardList = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: ${`repeat(5,${CARD_SIZE}px)`};
+  justify-content: space-between;
+  grid-row-gap: 30px;
+  margin-top:50px;
 `;
