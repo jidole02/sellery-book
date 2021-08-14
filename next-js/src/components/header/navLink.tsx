@@ -21,7 +21,15 @@ export default function NavLink({ href, content }: props) {
         }
         router.push(href);
       }}
-      className={router.pathname === href ? "active" : ""}
+      className={
+        router.pathname.includes("/all")
+          ? href.includes("/all")
+            ? "active"
+            : ""
+          : router.pathname === href
+          ? "active"
+          : ""
+      }
     >
       {content}
     </S.Link>
