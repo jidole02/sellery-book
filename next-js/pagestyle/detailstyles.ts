@@ -111,7 +111,6 @@ export const BottomContainer = styled.div`
     margin-top: 30px;
     font-size: 16px;
     color: black;
-    margin-bottom: 50px;
   }
 `;
 
