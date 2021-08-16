@@ -9,7 +9,7 @@ export const COLOR = {
   background : "#FBFBFB",
 };
 
-export const CARD_SIZE = 180;
+export const CARD_SIZE = 190;
 
 export const WRAPPER = styled.div`
   width: 100%;
