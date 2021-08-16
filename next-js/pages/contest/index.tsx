@@ -6,7 +6,7 @@ export default function ContestPage() {
     <S.Wrapper>
       <S.Container>
         <img src="/contest.jpg" />
-        <CardList title="우승 후보 작품을 만나보세요!" condition={"new"} />
+        <CardList title="우승 후보 작품을 만나보세요!" condition={"contest"} />
       </S.Container>
     </S.Wrapper>
   );
