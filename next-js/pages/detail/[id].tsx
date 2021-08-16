@@ -45,6 +45,9 @@ export default function DetailPage() {
             setToggle(!toggle);
           })
           .catch((err) => {
+            if (err.response.status === 403) {
+              return toast.info("이미 댓글을 작성하셨습니다.");
+            }
             console.log(err);
             toast.error("에러가 발생하였습니다.");
           });
