@@ -5,7 +5,7 @@ export const Wrapper = styled(WRAPPER)``;
 
 export const Container = styled(CONTAIENR)`
   display: flex;
-  justify-content: center;
+  flex-direction:column;
   padding-top: 40px;
   & img {
     width: 100%;

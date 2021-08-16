@@ -48,6 +48,13 @@ export default function Header() {
       localStorage.setItem("sellery-name", "");
     }
   }, [toggle, router.pathname]);
+  const search = (e): void => {
+    const value = e.target.value;
+    if (e.keyCode === 13 && value) {
+      router.push(`/search?title=${value}`);
+      e.target.value = "";
+    }
+  };
   return (
     <S.AllWrapper>
       <S.Wrapper>
@@ -61,7 +68,11 @@ export default function Header() {
               </S.Logo>
               <S.SearchBar>
                 <SearchIcon />
-                <input type="text" placeholder="검색어를 입력하세요." />
+                <input
+                  type="text"
+                  placeholder="검색어를 입력하세요."
+                  onKeyDown={search}
+                />
               </S.SearchBar>
             </div>
           </>
@@ -93,7 +104,10 @@ export default function Header() {
           <>
             <div style={{ gap: "50px", height: "100%" }}>
               <NavLink content="메인페이지" href="/" />
-              <NavLink content="전체보기" href="/all?page=1&genre=전체&sort=전체" />
+              <NavLink
+                content="전체보기"
+                href="/all?page=1&genre=전체&sort=전체"
+              />
               <NavLink content="셀러리공모전" href="/contest" />
               <NavLink content="책 집필하기" href="/write" />
             </div>
