@@ -3,7 +3,6 @@ import * as S from "../../pagestyle/writestyles";
 import book from "../../src/api/book";
 import None from "./none";
 import BookCard from "./bookCard";
-import { WRAPPER } from "../../styles";
 import { useRouter } from "next/router";
 
 export default function WritePage() {
@@ -43,20 +42,25 @@ export default function WritePage() {
             </S.TopBar>
           </>
           <>
-            <WRAPPER>
-              <S.GridContainer>
-                {data.map((obj, index) => (
-                  <BookCard
-                    key={index}
-                    title={obj.title}
-                    genre={obj.genre}
-                    src={obj.coverImg}
-                    id={obj["_id"]}
-                    date={obj.date}
-                  />
-                ))}
-              </S.GridContainer>
-            </WRAPPER>
+            <S.SubWrapper>
+              <S.SubContainer>
+                <S.Description>
+                  한번에 집필할 수 있는 책은 최대 2권입니다.
+                </S.Description>
+                <S.GridContainer>
+                  {data.map((obj, index) => (
+                    <BookCard
+                      key={index}
+                      title={obj.title}
+                      genre={obj.genre}
+                      src={obj.coverImg}
+                      id={obj["_id"]}
+                      date={obj.date}
+                    />
+                  ))}
+                </S.GridContainer>
+              </S.SubContainer>
+            </S.SubWrapper>
           </>
         </>
       )}

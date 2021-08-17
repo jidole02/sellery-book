@@ -6,6 +6,25 @@ export const Wrapper = styled(WRAPPER)`
   flex-direction: column;
 `;
 
+export const SubWrapper = styled(WRAPPER)``;
+export const SubContainer = styled(CONTAIENR)`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Description = styled.div`
+  width: 100%;
+  height: 10px;
+  padding: 10px 20px;
+  border-left: 2px solid ${COLOR.main};
+  color: ${COLOR.text};
+  font-size: 16px;
+  box-sizing: content-box;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+`;
+
 export const NotMent = styled.span`
   font-size: 17px;
   color: #5b358d;
@@ -56,7 +75,7 @@ export const GridContainer = styled(CONTAIENR)`
   grid-template-columns: 530px 530px;
   align-content: space-around;
   justify-content: space-between;
-  margin-top: 60px;
+  margin-top: 40px;
   grid-row-gap: 80px;
 `;
 

@@ -77,7 +77,14 @@ export default function NewPage() {
           toast.success("성공적으로 저장되었습니다!");
           router.push("/write");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          if (err.response.status === 403) {
+            toast.error(
+              "한도를 초과했습니다. 한번에 최대 2권까지 집필 가능합니다."
+            );
+          }
+          console.log(err);
+        });
     }
   };
   useEffect(() => {
